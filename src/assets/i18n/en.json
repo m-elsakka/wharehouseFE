@@ -1,0 +1,35 @@
+{ 
+    "distributores": "distributores",
+    "show_dist":"show distributors",
+
+    "branch":"branch"  ,
+    "dist_name":"distributore name" ,
+    "sap_code":"SAP code",
+    "region":"region" ,
+    "type":"type",
+
+    "generate_data":"generate data",
+    "check":"check",
+    "execute_report":"execute report",
+    "confirm":"confirm",
+    "Charge_to_ECC":"Charge to ECC",
+
+
+    "parameter" : "parameter",
+    "description":"description",
+    "value":"value",
+
+
+    "scenario" : "scenario",
+    "condition_type":"condition type",
+    "onInvoice":"on Invoice",
+
+    "article":"Itemno",
+    "discount":"discount",
+    "discount_type":"discount type",
+    "internal_order":"internal order",
+
+    "calc_total":"calculate totals"
+
+
+}

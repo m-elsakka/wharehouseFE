@@ -1,0 +1,73 @@
+.lang-btn {
+    background-color: transparent;
+    border: 0;
+    color: darkgray;
+}
+.lang-btn.active {
+    color: darkblue;
+}
+.lang-btn:focus {
+    outline: none;
+}
+#login {
+    height: 100vh;
+}
+.logo-img {
+    width: 9rem;
+}
+#login .card {
+    border: 1rem solid #0f0e9a;
+    border-radius: 2rem 0 2rem 0 !important;
+    background-color: white !important;
+    width: 30%;
+    height: 33rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+#login .card-block h2 {
+    color: #0f0e9a;
+    text-transform: uppercase;
+    margin: 1rem 0 2rem 0;
+}
+#login .form-control {
+    color: #545b62;
+    background-color: #fff;
+    border: 1px solid #7777d0 !important;
+    border-radius: 5px !important;
+}
+#login .form-control:focus {
+    background-color: #fff;
+    border-color: #0f0e9a !important;
+    outline: 0;
+    box-shadow: none !important;
+}
+
+#login label.custom-control-label {
+    color: #0f0e9a;
+    margin: 1rem 0;
+}
+#login .btn-secondary {
+    color: #0f0e9a !important;
+    background-color: #fff !important;
+    border-color: #0f0e9a !important;
+}
+#login .btn-secondary:hover  {
+    color: #fff !important;
+    background-color: #0f0e9a !important;
+}
+
+#login .btn-secondary:disabled{
+    opacity: 0.5;
+    cursor:no-drop;
+}
+#login  .btn-secondary:disabled:hover {
+    color: #0f0e9a !important;
+    background-color: #fff !important;
+    border-color: #0f0e9a !important;
+}
+#login .form-group {
+    margin-bottom: 1rem;
+    display: block;
+    padding: 0;
+    background: transparent;
+}

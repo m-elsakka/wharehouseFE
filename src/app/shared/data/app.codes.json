@@ -1,0 +1,12 @@
+{
+  "error_invalidUserNotRegistered" : "User is not registered",
+  "USER_NAME_NOT_FOUND": "Invalid username or password",
+  "INVALID_LOGIN_PASSWORD_NOT_MATCH": "Invalid username or password",
+  "error_invalidAccount": "Your account may be locked, please check status with your local IT team.",
+  "unauthorized":"You are unauthorized!",
+  "new_version":"You must refresh your browser before using GIS-Egypt app. As a newer version is found on the server.",
+  "not_admin": "You are not allow, due to you don't have admin user.",
+  "Mini_limit_can_not_greater_than_max_limit": "min limit can't be greater than max limit.",
+  "Ranges_overlap_error": "Color ranges not valid.",
+  "General_error": "General Error happened"
+}

@@ -1,0 +1,34 @@
+<!-- Sidebar Header starts -->
+<div class="sidebar-header">
+    <div class="logo clearfix">
+        <a [routerLink]="['/']" class="logo-text float-left">
+            <img class="logo-img" src="../../../../assets/img/logo.png" alt="logo"/>
+
+            <span class="text align-middle">My Store</span>
+        </a>
+
+    </div>
+</div>
+<!-- Sidebar Header Ends -->
+
+<!-- Sidebar Content starts -->
+<div class="sidebar-content">
+    <div class="nav-container">
+        <ul class="navigation">
+            <!-- First level menu -->
+            <li *ngFor="let menuItem of menuItems" [ngClass]="[menuItem.class]">
+                <a [routerLink]="menuItem.class === '' ? [menuItem.path] : null"
+                *ngIf="!menuItem.isExternalLink; else externalLinkBlock">
+                    <i [ngClass]="[menuItem.icon]"></i>
+                    <span class="menu-title">{{menuItem.title}}</span>
+                </a>
+                <ng-template #externalLinkBlock>
+                    <a [href]="[menuItem.path]" target="_blank">
+                        <i [ngClass]="[menuItem.icon]"></i>
+                        <span class="menu-title">{{menuItem.title}}</span>
+                    </a>
+                </ng-template>
+            </li>
+        </ul>
+    </div>
+</div>
