@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from 'src/app/shared/services/uitls/toast.service';
 import { AuthConstant } from 'src/app/shared/services/auth/auth.constant';
 import { AuthService } from 'src/app/shared/services/auth/auth.service';
+import { UserModel } from 'src/app/shared/model/master-data/user.model';
 
 declare var appConfig: any;
 
@@ -34,21 +35,28 @@ export class LoginComponent {
   onSubmit() {
     this.spinner.show();
     this.disableSubmitBtn = true;
-    this.authSer.login(this.loginForm.value.username, this.loginForm.value.password)
+
+    if (this.loginForm.valid) {
+    let userAuth: UserModel = new UserModel();
+    userAuth.username = this.loginForm.value.username.trim();
+    userAuth.password = this.loginForm.value.password;
+
+    this.authSer.login(userAuth)
       .subscribe((data: any) => {
         this.spinner.hide();
         this.disableSubmitBtn = false;
         if (!data.success) {
-          this.toastSer.setErrorMsg(data.exceptionMessage);
+          this.toastSer.setErrorMsg(data);
         } else {
-          this.authSer.saveToke(this.loginForm.value.username, data.data, this.loginForm.value.rememberme);
+          this.authSer.saveToke(data.data, this.loginForm.value.rememberme);
         }
       }, (error: any) => {
         this.spinner.hide();
         this.disableSubmitBtn = false;
-        this.toastSer.setErrorMsg(error.error);
+        this.toastSer.setErrorMsg(error);
       });
   }
+}
 
 }
 

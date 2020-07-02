@@ -1,6 +1,6 @@
 var appConfig = {
   isLive: false,
-  context: "autoclaims",
+  context: "mystock",
   backendUrl : "http://localhost:8080/MyStockBE/"
 
   // test

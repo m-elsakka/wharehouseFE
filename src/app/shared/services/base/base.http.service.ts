@@ -58,7 +58,7 @@ export class HttpService {
         responseBody = this.jwtHelper.decodeToken(response);
         return responseBody.data;
       }), catchError((error: HttpErrorResponse) => {
-        return throwError(error.message);
+        return throwError(this.handleError(error));
       }));
   }
 
@@ -128,5 +128,20 @@ export class HttpService {
           return throwError(error.message);
         }));
   }
+
+  public handleError(error: any) {
+    console.error('An error occurred', error);
+    if (error.status == 401) {
+        return "You are not authorized for this action, Please Logout and Login again Or contact  IT support team for any further information.";
+    } else if (error.status == 500) {
+        return "Error occurred (500) ,Please contact  IT support team for any further information.";
+    } else if (error.status == 404) {
+        return "Error occurred (404) ,Please contact  IT support team for any further information.";
+    } else if (error.status == 409) {
+  return "You must refresh your browser before using app. As a newer version is found on the server.";
+    } else {
+        return "Error occurred ,Please contact  IT support team for any further information.";
+    }
+}
 
 }

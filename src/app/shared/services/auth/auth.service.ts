@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {map} from 'rxjs/operators';
 import {AuthorityModel} from '../../model/master-data/authority.model';
+import { UserModel } from '../../model/master-data/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,19 +20,13 @@ export class AuthService {
   constructor(private router: Router, private httpService: HttpService) {
   }
 
-  login(username: string, password: string) {
-    let headers;
-    headers = this.httpService.headers;
-    let bodySt, body;
-    bodySt = '{ ' + '"' + AuthConstant.USERNAME + '": null,' + '"' + AuthConstant.PASSWORD + '": null' + '}';
-    body = JSON.parse(bodySt);
-    body.username = username;
-    body.password = password;
-    return this.httpService.postRequest(AuthConstant.LOGIN_URL, body, {headers: headers});
+  login(userAuth: UserModel) {
+    let headers = this.httpService.headers;
+    return this.httpService.postRequest(AuthConstant.LOGIN_URL, JSON.stringify(userAuth), {headers: headers});
 
   }
 
-  saveToke(username: string, loginObject: any, rememberMe: boolean) {
+  saveToke(loginObject: any, rememberMe: boolean) {
     if (loginObject && !this.jwtHelper.isTokenExpired(loginObject.token)) {
       sessionStorage.setItem(AuthConstant.AUTHORIZATION, loginObject.token);
       sessionStorage.setItem(AuthConstant.USER_ID, loginObject.username);
@@ -44,7 +39,7 @@ export class AuthService {
       if (rememberMe) {
         localStorage.setItem(AuthConstant.AUTHORIZATION, loginObject.token);
         localStorage.setItem(AuthConstant.USER_ID, loginObject.username);
-      //  localStorage.setItem('authorities', JSON.stringify(this.authorities));
+       // localStorage.setItem('authorities', JSON.stringify(this.authorities));
        // localStorage.setItem(AuthConstant.NAME, loginObject.fullName);
       }
     
