@@ -3,8 +3,8 @@ import { HttpHeaders } from '@angular/common/http';
 export class BaseConstants {
 
   // Base URLs
-  //static BASE_TRANS_URL = 'transactions';
- // static BASE_MASTER_DATA_URL = 'masterdata';
+  static BASE_TRANS_URL = 'transactions';
+ static BASE_MASTER_DATA_URL = 'masterdata';
 
   // Function URLs
   static FIND_ALL = 'findAll';

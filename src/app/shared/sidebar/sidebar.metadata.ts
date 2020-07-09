@@ -3,10 +3,10 @@ export interface RouteInfo {
   title: string;
   icon: string;
   class: string;
-  // badge: string;
-  // badgeClass: string;
+  badge: string;
+  badgeClass: string;
   isExternalLink: boolean;
-  // submenu: RouteInfo[];
-  // authorities: string[];
-  //isMenu: boolean;
+  submenu: RouteInfo[];
+  authorities: string[];
+  isMenu: boolean;
 }

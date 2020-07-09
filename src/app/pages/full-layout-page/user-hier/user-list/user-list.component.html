@@ -1,0 +1,162 @@
+<div id="teamleadAssignId" *ngIf="!renderForm">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content-header ivf-content-header">Users List</div>
+    </div>
+  </div>
+
+  <!--SEARCH FORM-->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body ivf-card-body">
+          <div class="card-block">
+            <form class="form" (ngSubmit)="onSearch()" #searchForm="ngForm">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="searchUserName">User name</label>
+                    <input type="text" class="form-control" id="searchUserName"
+                           name="searchUserName" #UserName="ngModel"
+                           [(ngModel)]="searchUserName">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="searchFirstName">First name</label>
+                    <input type="text" class="form-control" id="searchFirstName"
+                           name="searchFirstName" #firstName="ngModel"
+                           [(ngModel)]="searchFirstName">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="searchLastName">Last name</label>
+                    <input type="text" class="form-control" id="searchLastName"
+                           name="searchLastName" #lastName="ngModel"
+                           [(ngModel)]="searchLastName">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="searchJobDescription">Job Description</label>
+                    <input type="text" class="form-control" id="searchJobDescription"
+                           name="searchJobDescription" #jobDescription="ngModel"
+                           [(ngModel)]="searchJobDescription">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="active">Status</label>
+                    <select class="form-control" id="active" name="active" #active="ngModel"
+                            [(ngModel)]="searchActive">
+                      <option>All</option>
+                      <option value=1>Active</option>
+                      <option value=0>Inactive</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="searchUserLevel">Level</label>
+                    <select class="form-control" id="searchUserLevel" name="searchUserLevel" #userLevel="ngModel"
+                            [(ngModel)]="searchUserLevel">
+                      <option>All</option>
+                      <option value="{{level.id}}" *ngFor="let level of userLevels">{{level.description}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3" *ngIf="searchUserLevel && searchUserLevel ==1 ">
+                  <div class="form-group">
+                    <label for="searchBranchCode">Branch</label>
+                    <select class="form-control" id="searchBranchCode" name="searchBranchCode"
+                            #searchBranchCode="ngModel" [(ngModel)]="searchBranch">
+                            <option>All</option>
+                      <option value="{{branche.branchno}}" *ngFor="let branche of branches">
+                        {{branche.branchno}} - {{ branche.branchnamee }}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <!----------------------------Btns----------------------------->
+              <div class="form-group">
+                <div class="col-md-12 text-right">
+                  <button type="submit" class="btn btn-raised btn-warning mr-1 shadow-z-2">
+                    <i class="ft-search"></i> Search
+                  </button>
+                  <button type="button" class="btn btn-raised btn-success mr-1 shadow-z-2" (click)="onAddItem()">
+                    <i class="ft-search"></i> Add
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--DATA-TABLE-->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-block">
+            <ngx-datatable id="usersList" class="bootstrap" [rows]="itemList" [columnMode]="'force'"
+                           [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="searchingObject.size"
+                           [externalPaging]="true" [count]="dataTableCount" [offset]="searchingObject.page"
+                           (page)='setPage($event)' (sort)="setPage($event)">
+
+              <ngx-datatable-column name="User Name" prop="userName">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value"
+                             let-row="row">
+                  {{ row.userName }}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Full Name" prop="firstName">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value"
+                             let-row="row">
+                  {{ row.firstName }} - {{row.lastName}}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Status" prop="active">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  {{ row.active === 1 ? 'Active' : 'Inactive' }}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Job Description" prop="jobDescription">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value"
+                             let-row="row">
+                  {{ row.jobDescription }}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Action">
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <a (click)="onEdit(row)" class="btn btn-primary btn-fab" title="Edit">
+                    <i class="ft-edit"></i></a>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="SurveyGroupFormId" *ngIf="renderForm">
+  <app-user [item]="selectedItem" [isUpdateMode]='isUpdateMode'
+            [userLevels]="userLevels"
+            (renderFormEvent)='updateView($event)'>
+  </app-user>
+</div>
