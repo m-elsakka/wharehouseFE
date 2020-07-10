@@ -84,7 +84,7 @@
                             <outputDirectory>${build.directory}/${project.artifactId}</outputDirectory >
                             <resources>
                                 <resource>
-                                    <directory>./dist/MyStockFE</directory>
+                                    <directory>./dist/wharehouseFE</directory>
                                 </resource>
                             </resources>
                         </configuration>

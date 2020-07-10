@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl:"http://localhost:8080/MyStockBE/"
-
+  baseUrl: 'http://localhost:8080/wharehouseBE/',
 };
 
 /*
