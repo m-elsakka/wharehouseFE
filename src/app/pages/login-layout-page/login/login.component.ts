@@ -12,19 +12,20 @@ declare var appConfig: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
   @ViewChild('f') loginForm: NgForm;
 
   appVersion: string;
   disableSubmitBtn: boolean;
 
-  constructor(private toastSer: ToastService,
+  constructor(
+    private toastSer: ToastService,
     private spinner: NgxSpinnerService,
     private router: Router,
-    private authSer: AuthService) {
+    private authSer: AuthService
+  ) {
     this.appVersion = appConfig['app-version'];
     this.disableSubmitBtn = false;
     if (authSer.isAuthenticated()) {
@@ -37,26 +38,26 @@ export class LoginComponent {
     this.disableSubmitBtn = true;
 
     if (this.loginForm.valid) {
-    let userAuth: UserModel = new UserModel();
-    userAuth.username = this.loginForm.value.username.trim();
-    userAuth.password = this.loginForm.value.password;
+      let userAuth: UserModel = new UserModel();
+      userAuth.username = this.loginForm.value.username.trim();
+      userAuth.password = this.loginForm.value.password;
 
-    this.authSer.login(userAuth)
-      .subscribe((data: any) => {
-        this.spinner.hide();
-        this.disableSubmitBtn = false;
-        if (!data.success) {
-          this.toastSer.setErrorMsg(data);
-        } else {
-          this.authSer.saveToke(data.data, this.loginForm.value.rememberme);
+      this.authSer.login(userAuth).subscribe(
+        (data: any) => {
+          this.spinner.hide();
+          this.disableSubmitBtn = false;
+          if (!data.success) {
+            this.toastSer.setErrorMsg(data.exceptionMessage);
+          } else {
+            this.authSer.saveToke(data.data, this.loginForm.value.rememberme);
+          }
+        },
+        (error: any) => {
+          this.spinner.hide();
+          this.disableSubmitBtn = false;
+          this.toastSer.setErrorMsg(error);
         }
-      }, (error: any) => {
-        this.spinner.hide();
-        this.disableSubmitBtn = false;
-        this.toastSer.setErrorMsg(error);
-      });
+      );
+    }
   }
 }
-
-}
-
