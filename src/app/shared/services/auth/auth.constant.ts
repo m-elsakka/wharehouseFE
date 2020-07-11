@@ -1,6 +1,6 @@
 export class AuthConstant {
   static LOGIN_URL = 'user/login';
-  static LOGOUT_URL = 'user/logout'
+  static LOGOUT_URL = 'logoutservice/web/logout'
 
   static USERNAME = 'username';
   static PASSWORD = 'password';
