@@ -39,7 +39,7 @@ export class LoginComponent {
 
     if (this.loginForm.valid) {
       let userAuth: UserModel = new UserModel();
-      userAuth.username = this.loginForm.value.username.trim();
+      userAuth.userName = this.loginForm.value.username.trim();
       userAuth.password = this.loginForm.value.password;
 
       this.authSer.login(userAuth).subscribe(
