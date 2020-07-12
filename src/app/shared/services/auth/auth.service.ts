@@ -27,20 +27,19 @@ export class AuthService {
   }
 
   saveToke(loginObject: any, rememberMe: boolean) {
-    debugger;
     if (loginObject && !this.jwtHelper.isTokenExpired(loginObject.token)) {
       sessionStorage.setItem(AuthConstant.AUTHORIZATION, loginObject.token);
       sessionStorage.setItem(AuthConstant.USER_ID, loginObject.fullName);
-      //this.authorities = [];
-      // loginObject.authorities.forEach((element) => {
-      //   this.authorities.push(element.authority);
-      // });
-      // sessionStorage.setItem('authorities', JSON.stringify(this.authorities));
-      // sessionStorage.setItem(AuthConstant.NAME, loginObject.fullName);
+      this.authorities = [];
+      loginObject.authorities.forEach((element) => {
+        this.authorities.push(element.authority);
+      });
+      sessionStorage.setItem('authorities', JSON.stringify(this.authorities));
+      sessionStorage.setItem(AuthConstant.NAME, loginObject.fullName);
       if (rememberMe) {
         localStorage.setItem(AuthConstant.AUTHORIZATION, loginObject.token);
-        // localStorage.setItem(AuthConstant.USER_ID, loginObject.username);
-        // localStorage.setItem('authorities', JSON.stringify(this.authorities));
+        localStorage.setItem(AuthConstant.USER_ID, loginObject.username);
+        localStorage.setItem('authorities', JSON.stringify(this.authorities));
         localStorage.setItem(AuthConstant.NAME, loginObject.fullName);
       }
 

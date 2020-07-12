@@ -4,8 +4,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { FullPagesRoutingModule } from './full-pages-routing.module';
 import { CalendarModule } from 'primeng/calendar';
-import { ReportService } from "src/app/shared/services/report/report.service";
-
+import { ReportService } from 'src/app/shared/services/report/report.service';
 
 import { AuthorityService } from '../../shared/services/master-data/authority.service';
 //import {CustomFormsModule} from 'ng2-validation';
@@ -24,16 +23,27 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-import { MatDatepickerModule, MatMomentDateModule } from '@coachcare/datepicker';
+import {
+  MatDatepickerModule,
+  MatMomentDateModule,
+} from '@coachcare/datepicker';
 //import {FormControl} from '@angular/forms';
 import { TranslocoRootModule } from 'src/app/transloco-root.module';
-
+import { UserListComponent } from './user-hier/user-list/user-list.component';
+import { BranchListComponent } from './branch/branch.component';
+import { ItemListComponent } from './item/item.component';
+import { UserManagerService } from 'src/app/shared/services/master-data/user-manager.service';
+import { ItemService } from 'src/app/shared/services/master-data/item.service';
+import { BranchService } from 'src/app/shared/services/master-data/branch.service';
+import { UserComponent } from './user-hier/user/user.component';
+import { BaseHttpCrudService } from 'src/app/shared/services/base/base-http-crud.service';
+import { CustomFormsModule } from 'ng2-validation';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   imports: [
     TranslocoRootModule,
-    // CustomFormsModule ,
+    CustomFormsModule,
     CommonModule,
     FullPagesRoutingModule,
     NgxDatatableModule,
@@ -47,16 +57,27 @@ import { TranslocoRootModule } from 'src/app/transloco-root.module';
     MatRadioModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    //   DropdownModule,
-    //   MultiSelectModule,
+    // DropdownModule,
+    MultiSelectModule,
     AccordionModule,
     //FormControl
     //BrowserAnimationsModule
   ],
   declarations: [
-    AccessDeniedComponent
+    AccessDeniedComponent,
+    UserListComponent,
+    UserComponent,
+    BranchListComponent,
+    ItemListComponent,
   ],
-  providers: [ToastrService, AuthorityService, ReportService]
+  providers: [
+    BaseHttpCrudService,
+    ToastrService,
+    AuthorityService,
+    ReportService,
+    UserManagerService,
+    ItemService,
+    BranchService,
+  ],
 })
-export class FullPagesModule {
-}
+export class FullPagesModule {}

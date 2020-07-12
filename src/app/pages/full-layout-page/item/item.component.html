@@ -1,0 +1,228 @@
+<div id="ItemsId">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content-header ivf-content-header"></div>
+    </div>
+  </div>
+
+  <!--DATA-TABLE-->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-block">
+            <ngx-datatable
+              class="bootstrap"
+              [rows]="itemList"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="searchingObject.size"
+              [externalPaging]="true"
+              [count]="dataTableCount"
+              [offset]="searchingObject.page"
+              (page)="setPage($event)"
+            >
+              <!-- Row Panel Template -->
+              <ngx-datatable-row-detail [rowHeight]="100" #myDetailRow>
+                <ng-template
+                  let-row="row"
+                  let-expanded="expanded"
+                  ngx-datatable-row-detail-template
+                >
+                  <div>
+                    TEST TEST
+                  </div>
+                </ng-template>
+              </ngx-datatable-row-detail>
+
+              <ngx-datatable-column name="itemno">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                  <input
+                    type="text"
+                    class="managetextfilter"
+                    placeholder="{{ 'itemno' | transloco }}"
+                    (keyup)="updateFilter($event, 'itemno')"
+                  />
+                </ng-template>
+
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-value="value"
+                  let-row="row"
+                >
+                  {{ row.itemno }}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="itemnamee">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                  <input
+                    type="text"
+                    class="managetextfilter"
+                    placeholder="{{ 'itemnamee' | transloco }}"
+                    (keyup)="updateFilter($event, 'itemnamee')"
+                  />
+                </ng-template>
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-value="value"
+                  let-row="row"
+                >
+                  <mat-form-field>
+                    <input
+                      matInput
+                      value="itemnamee"
+                      [(ngModel)]="row.itemnamee"
+                      [disabled]="!isEditable[rowIndex]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="itemnamea">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                  <input
+                    type="text"
+                    class="managetextfilter"
+                    placeholder="{{ 'itemnamea' | transloco }}"
+                    (keyup)="updateFilter($event, 'itemnamea')"
+                  />
+                </ng-template>
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-value="value"
+                  let-row="row"
+                >
+                  <mat-form-field>
+                    <input
+                      matInput
+                      value="itemnamea"
+                      [(ngModel)]="row.itemnamea"
+                      [disabled]="!isEditable[rowIndex]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="itemtype">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                  <input
+                    type="text"
+                    class="managetextfilter"
+                    placeholder="{{ 'itemtype' | transloco }}"
+                    (keyup)="updateFilter($event, 'itemtype')"
+                  />
+                </ng-template>
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-value="value"
+                  let-row="row"
+                >
+                  <mat-form-field>
+                    <input
+                      matInput
+                      value="itemtype"
+                      [(ngModel)]="row.itemtype"
+                      [disabled]="!isEditable[rowIndex]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="netweight">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                  <input
+                    type="text"
+                    class="managetextfilter"
+                    placeholder="{{ 'netweight' | transloco }}"
+                    (keyup)="updateFilter($event, 'netweight')"
+                  />
+                </ng-template>
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-value="value"
+                  let-row="row"
+                >
+                  <mat-form-field>
+                    <input
+                      matInput
+                      value="netweight"
+                      [(ngModel)]="row.netweight"
+                      [disabled]="!isEditable[rowIndex]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="uom">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                  <input
+                    type="text"
+                    class="managetextfilter"
+                    placeholder="{{ 'uom' | transloco }}"
+                    (keyup)="updateFilter($event, 'uom')"
+                  />
+                </ng-template>
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-value="value"
+                  let-row="row"
+                >
+                  <mat-form-field>
+                    <input
+                      matInput
+                      value="uom"
+                      [(ngModel)]="row.uom"
+                      [disabled]="!isEditable[rowIndex]"
+                    />
+                  </mat-form-field>
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="Action">
+                <ng-template
+                  let-value="value"
+                  let-row="row"
+                  let-rowIndex="rowIndex"
+                  ngx-datatable-cell-template
+                >
+                  <!-- Pencil icon -->
+                  <i
+                    class="fa fa-pencil"
+                    title="Modify"
+                    *ngIf="!this.isEditable[rowIndex]"
+                    (click)="
+                      this.isEditable[rowIndex] = !this.isEditable[rowIndex]
+                    "
+                  ></i>
+
+                  <!-- Save/Delete icons -->
+                  <i
+                    class="fa fa-floppy-o"
+                    *ngIf="this.isEditable[rowIndex]"
+                    title="Save"
+                    (click)="save(row, rowIndex)"
+                  ></i>
+                  <i
+                    class="fa fa-close"
+                    *ngIf="this.isEditable[rowIndex]"
+                    title="Delete"
+                    (click)="delete(row, rowIndex)"
+                  ></i>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

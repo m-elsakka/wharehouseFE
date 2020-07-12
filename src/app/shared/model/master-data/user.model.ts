@@ -1,7 +1,7 @@
 import { AuthorityModel } from './authority.model';
 
 export class UserModel {
-  user_name: string;
+  userName: string;
   password: string;
   authorities: AuthorityModel[];
   encrypted: boolean;

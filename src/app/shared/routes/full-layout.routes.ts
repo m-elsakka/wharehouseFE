@@ -4,7 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 export const Full_ROUTES: Routes = [
   {
     path: 'full-layout',
-    loadChildren: () => import('src/app/pages/full-layout-page/full-pages.module').then(m => m.FullPagesModule)
-
-  }
+    loadChildren: () =>
+      import('src/app/pages/full-layout-page/full-pages.module').then(
+        (m) => m.FullPagesModule
+      ),
+  },
 ];

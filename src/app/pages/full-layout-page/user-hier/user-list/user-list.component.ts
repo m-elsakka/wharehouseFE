@@ -1,21 +1,20 @@
-import {Component, OnInit} from '@angular/core';
-import {BaseListComponent} from "../../base-components/base-list-component";
-import {ToastService} from "../../../../shared/services/uitls/toast.service";
-import {NgxSpinnerService} from "ngx-spinner";
-import {FilterPojo} from "../../../../shared/model/searching-pojos/filter.pojo";
-import {UserManagerService} from "../../../../shared/services/master-data/user-manager.service";
-import {UserLevelModel} from "../../../../shared/model/master-data/user-level.model";
-import {UserModel} from "../../../../shared/model/master-data/user.model";
-import {BranchService} from "../../../../shared/services/master-data/branch.service";
-import {BranchModel} from "../../../../shared/model/master-data/branch.model";
+import { Component, OnInit } from '@angular/core';
+import { BaseListComponent } from '../../base-components/base-list-component';
+import { ToastService } from '../../../../shared/services/uitls/toast.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { FilterPojo } from '../../../../shared/model/searching-pojos/filter.pojo';
+import { UserManagerService } from '../../../../shared/services/master-data/user-manager.service';
+import { UserLevelModel } from '../../../../shared/model/master-data/user-level.model';
+import { UserModel } from '../../../../shared/model/master-data/user.model';
+import { BranchService } from '../../../../shared/services/master-data/branch.service';
+import { BranchModel } from '../../../../shared/model/master-data/branch.model';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent extends BaseListComponent implements OnInit {
-
   searchUserName: string;
   searchFirstName: string;
   searchLastName: string;
@@ -27,15 +26,16 @@ export class UserListComponent extends BaseListComponent implements OnInit {
   userLevels: UserLevelModel[];
   branches: BranchModel[];
 
-  constructor(private toast: ToastService,
-              private spinner: NgxSpinnerService,
-              private branchSer: BranchService,
-              private userManagerSer: UserManagerService) {
+  constructor(
+    private toast: ToastService,
+    private spinner: NgxSpinnerService,
+    private branchSer: BranchService,
+    private userManagerSer: UserManagerService
+  ) {
     super(toast, spinner, userManagerSer);
     this.serviceURL = this.userManagerSer.serviceUrl;
     this.getUserLevels();
     this.getBranches();
-
   }
 
   ngOnInit() {
@@ -73,14 +73,14 @@ export class UserListComponent extends BaseListComponent implements OnInit {
       jobDescriptionFilter.type = '1';
       this.searchingObject.filtersList.push(jobDescriptionFilter);
     }
-    if (this.searchUserLevel && (this.searchUserLevel + '') !== 'All') {
+    if (this.searchUserLevel && this.searchUserLevel + '' !== 'All') {
       const userLevelFilter: FilterPojo = new FilterPojo();
       userLevelFilter.fieldName = 'userLevelId';
       userLevelFilter.filter = '' + this.searchUserLevel;
       userLevelFilter.type = '2';
       this.searchingObject.filtersList.push(userLevelFilter);
     }
-    if (this.searchActive && (this.searchActive + '') !== 'All') {
+    if (this.searchActive && this.searchActive + '' !== 'All') {
       const activeFilter: FilterPojo = new FilterPojo();
       activeFilter.fieldName = 'active';
       activeFilter.filter = '' + this.searchActive;
@@ -88,13 +88,17 @@ export class UserListComponent extends BaseListComponent implements OnInit {
       this.searchingObject.filtersList.push(activeFilter);
     }
 
-    if (this.searchBranch && this.searchUserLevel && +this.searchUserLevel === 1) {
-      if (this.searchBranch && (this.searchBranch + '') !== 'All') {
-      const branchFilter: FilterPojo = new FilterPojo();
-      branchFilter.fieldName = 'branchNo';
-      branchFilter.filter = this.searchBranch;
-      branchFilter.type = '1';
-      this.searchingObject.filtersList.push(branchFilter);
+    if (
+      this.searchBranch &&
+      this.searchUserLevel &&
+      +this.searchUserLevel === 1
+    ) {
+      if (this.searchBranch && this.searchBranch + '' !== 'All') {
+        const branchFilter: FilterPojo = new FilterPojo();
+        branchFilter.fieldName = 'branchNo';
+        branchFilter.filter = this.searchBranch;
+        branchFilter.type = '1';
+        this.searchingObject.filtersList.push(branchFilter);
       }
     }
 
@@ -106,19 +110,25 @@ export class UserListComponent extends BaseListComponent implements OnInit {
   }
 
   private getUserLevels() {
-    this.userManagerSer.retrieveUserLevels().subscribe((data: any) => {
-      this.userLevels = this.handleSuccess(data);
-    }, (error: any) => {
-      this.handleFailure(error);
-    });
+    this.userManagerSer.retrieveUserLevels().subscribe(
+      (data: any) => {
+        this.userLevels = this.handleSuccess(data);
+      },
+      (error: any) => {
+        this.handleFailure(error);
+      }
+    );
   }
 
   private getBranches() {
-    this.branchSer.getBranches().subscribe((data: any) => {
-      this.branches = super.handleSuccess(data);
-    }, (error: any) => {
-      this.branches = [];
-      super.handleFailure(error);
-    });
+    this.branchSer.getAllBranches().subscribe(
+      (data: any) => {
+        this.branches = super.handleSuccess(data);
+      },
+      (error: any) => {
+        this.branches = [];
+        super.handleFailure(error);
+      }
+    );
   }
 }

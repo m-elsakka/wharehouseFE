@@ -1,14 +1,40 @@
-import {RouteInfo} from './sidebar.metadata';
+import { RouteInfo } from './sidebar.metadata';
 
 export const ROUTES: RouteInfo[] = [
-  // {
-  //   path: '/full-layout/parameters',
-  //   title: 'Parameters',
-  //   icon: 'ft-layout', class: '',
-  //   isExternalLink: false
-  // }
-  // , {
-  //   path: '/full-layout/edit-survey-group-assign',
-  //   title: 'Survey Group'
-  // }
+  {
+    path: '/full-layout/branch',
+    title: 'Plants',
+    icon: 'ft-layout',
+    class: '',
+    badge: '',
+    badgeClass: '',
+    isExternalLink: false,
+    submenu: [],
+    isMenu: true,
+    authorities: ['ROLE_ADMIN', 'ROLE_MASTERDATA'],
+  },
+  {
+    path: '/full-layout/item',
+    title: 'Items',
+    icon: 'ft-layout',
+    class: '',
+    badge: '',
+    badgeClass: '',
+    isExternalLink: false,
+    submenu: [],
+    isMenu: true,
+    authorities: ['ROLE_ADMIN', 'ROLE_MASTERDATA'],
+  },
+  {
+    path: '/full-layout/user',
+    title: 'Users',
+    icon: 'ft-layout',
+    class: '',
+    badge: '',
+    badgeClass: '',
+    isExternalLink: false,
+    submenu: [],
+    isMenu: true,
+    authorities: ['ROLE_ADMIN', 'ROLE_USERMANAGEMENT'],
+  },
 ];
