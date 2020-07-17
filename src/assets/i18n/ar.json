@@ -1,16 +1,47 @@
 {
-  "branch": "plant",
-  "plantno": "plant no",
-  "plantnamee": "palnt name english",
-  "plantnamea": "palnt name arabic",
-  "region": "region",
-  "type": "type",
-  "active": "active",
+    "distributores":"distributeurs",
+    "show_dist":"afficher distributeurs",
 
-  "itemno": "item no",
-  "itemnamee": "item name english",
-  "itemnamea": "item name arabic",
-  "itemtype": "item type",
-  "netweight": "net weight",
-  "uom": "unit of measure"
+    "branch":"branche" ,
+    "dist_name":"nom du distributeur",
+    "sap_code":"SAP code" ,
+    "region":"Région" ,
+    "type":"type",
+
+    "generate_data":"générer des données",
+    "check":"vérifier",
+    "execute_report":"exécuter le report",
+    "confirm":"confirmer",
+    "Charge_to_ECC":"Charge vers ECC",
+
+    "parameter" : "paramètre",
+    "description":"description",
+    "value":"valeur",
+
+    "scenario" : "scénario",
+    "condition_type":"type de condition",
+    "onInvoice":"on Invoice",
+
+
+    "article":"article",
+    "discount":"remise",
+    "discount_type":"type de remise",
+    "internal_order":"internal order",
+
+    "calc_total":"calculer les totaux",
+
+    "branchno":"branchno",
+    "branchnamea":"branchnamea",
+    "branchnamee":"branchnamee",
+    "active":"active",
+
+
+    "itemnamee" : "itemnamee",
+    "itemnamea" : "itemnamea",
+    "itemtype" : "itemtype",
+    "netweight" : "netweight",
+    "uom" : "uom"
+
+
+
 }

@@ -46,6 +46,7 @@ export class BranchListComponent extends BaseListComponent implements OnInit {
       (data: any) => {
         this.spinner.hide();
         this.rows = data.data;
+        console.log("data" +  this.rows[0].branchno)
       },
       (error: any) => {
         this.spinner.hide();
@@ -69,7 +70,7 @@ export class BranchListComponent extends BaseListComponent implements OnInit {
   }
 
   saveBranch(row: any) {
-    this.branchServ.saveItem(this.serviceURL, row, true).subscribe(
+    this.branchServ.saveBranch(this.serviceURL, row, true).subscribe(
       (data: any) => {
         console.log(data);
         if (data.success) {

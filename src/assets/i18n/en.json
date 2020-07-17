@@ -1,16 +1,46 @@
 {
   "branch": "plant",
-  "plantno": "plant no",
-  "plantnamee": "palnt name english",
-  "plantnamea": "palnt name arabic",
-  "region": "region",
-  "type": "type",
-  "active": "active",
+    "region":"region" ,
 
-  "itemno": "item no",
-  "itemnamee": "item name english",
-  "itemnamea": "item name arabic",
-  "itemtype": "item type",
-  "netweight": "net weight",
-  "uom": "unit of measure"
+
+    "generate_data":"generate data",
+    "check":"check",
+    "execute_report":"execute report",
+    "confirm":"confirm",
+    "Charge_to_ECC":"Charge to ECC",
+
+
+    "parameter" : "parameter",
+    "description":"description",
+    "value":"value",
+
+
+    "scenario" : "scenario",
+    "condition_type":"condition type",
+    "onInvoice":"on Invoice",
+
+    "article":"Itemno",
+    "discount":"discount",
+    "discount_type":"discount type",
+    "internal_order":"internal order",
+
+    "calc_total":"calculate totals",
+
+
+
+    "branchno":"branchno",
+    "branchnamea":"branchnamea",
+    "branchnamee":"branchnamee",
+    "active":"active",
+
+
+    "itemno" : "itemno",
+
+    "itemnamee" : "itemnamee",
+    "itemnamea" : "itemnamea",
+    "itemtype" : "itemtype",
+    "netweight" : "netweight",
+    "uom" : "uom"
+
+
 }
