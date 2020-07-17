@@ -9,16 +9,31 @@
     <div class="card">
       <div class="card-body">
         <div class="card-block">
-          <form class="form" (ngSubmit)="onFormSubmit()" #submitItemForm="ngForm">
+          <form
+            class="form"
+            (ngSubmit)="onFormSubmit()"
+            #submitItemForm="ngForm"
+          >
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="searchUserName">User name</label>
-                  <input type="text" class="form-control" id="searchUserName" required
-                         name="searchUserName" #UserName="ngModel" [disabled]="isUpdateMode"
-                         [(ngModel)]="item.userName">
-                  <small class="form-text text-muted danger"
-                         *ngIf="!UserName.valid && (UserName.dirty || UserName.touched)">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="searchUserName"
+                    required
+                    name="searchUserName"
+                    #UserName="ngModel"
+                    [disabled]="isUpdateMode"
+                    [(ngModel)]="item.userName"
+                  />
+                  <small
+                    class="form-text text-muted danger"
+                    *ngIf="
+                      !UserName.valid && (UserName.dirty || UserName.touched)
+                    "
+                  >
                     User name is required!
                   </small>
                 </div>
@@ -27,11 +42,21 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="searchFirstName">First name</label>
-                  <input type="text" class="form-control" id="searchFirstName"
-                         name="searchFirstName" #firstName="ngModel" required
-                         [(ngModel)]="item.firstName">
-                  <small class="form-text text-muted danger"
-                         *ngIf="!firstName.valid && (firstName.dirty || firstName.touched)">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="searchFirstName"
+                    name="searchFirstName"
+                    #firstName="ngModel"
+                    required
+                    [(ngModel)]="item.firstName"
+                  />
+                  <small
+                    class="form-text text-muted danger"
+                    *ngIf="
+                      !firstName.valid && (firstName.dirty || firstName.touched)
+                    "
+                  >
                     First name is required!
                   </small>
                 </div>
@@ -40,11 +65,21 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="searchLastName">Last name</label>
-                  <input type="text" class="form-control" id="searchLastName"
-                         name="searchLastName" #lastName="ngModel" required
-                         [(ngModel)]="item.lastName">
-                  <small class="form-text text-muted danger"
-                         *ngIf="!lastName.valid && (lastName.dirty || lastName.touched)">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="searchLastName"
+                    name="searchLastName"
+                    #lastName="ngModel"
+                    required
+                    [(ngModel)]="item.lastName"
+                  />
+                  <small
+                    class="form-text text-muted danger"
+                    *ngIf="
+                      !lastName.valid && (lastName.dirty || lastName.touched)
+                    "
+                  >
                     Last name is required!
                   </small>
                 </div>
@@ -55,13 +90,18 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="searchJobDescription">Job Description</label>
-                  <input type="text" class="form-control" id="searchJobDescription"
-                         name="searchJobDescription" #jobDescription="ngModel"
-                         [(ngModel)]="item.jobDescription">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="searchJobDescription"
+                    name="searchJobDescription"
+                    #jobDescription="ngModel"
+                    [(ngModel)]="item.jobDescription"
+                  />
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <!-- <div class="col-md-3">
                 <div class="form-group">
                   <label for="searchUserLevel">Level</label>
                   <select class="form-control" id="searchUserLevel" name="searchUserLevel" #userLevel="ngModel"
@@ -74,18 +114,33 @@
                     User Level is required!
                   </small>
                 </div>
-              </div>
+              </div> -->
 
-              <div class="col-md-3" *ngIf="item.userLevelId && item.userLevelId ==1 ">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label for="branchCode">Branch</label>
-                  <select class="form-control" id="branchCode" name="branchCode"
-                          #branchCode="ngModel" [(ngModel)]="item.branchNo" required="">
-                    <option value="{{branche.branchno}}" *ngFor="let branche of branches">
-                      {{branche.branchno}} - {{ branche.branchnamee }}</option>
+                  <select
+                    class="form-control"
+                    id="branchCode"
+                    name="branchCode"
+                    #branchCode="ngModel"
+                    [(ngModel)]="item.branchNo"
+                    required=""
+                  >
+                    <option
+                      value="{{ branche.branchno }}"
+                      *ngFor="let branche of branches"
+                    >
+                      {{ branche.branchno }} - {{ branche.branchnamee }}</option
+                    >
                   </select>
-                  <small class="form-text text-muted danger"
-                         *ngIf="!branchCode.valid && (branchCode.dirty || branchCode.touched)">
+                  <small
+                    class="form-text text-muted danger"
+                    *ngIf="
+                      !branchCode.valid &&
+                      (branchCode.dirty || branchCode.touched)
+                    "
+                  >
                     Branch is required!
                   </small>
                 </div>
@@ -95,23 +150,51 @@
             <div class="row">
               <div class="form-group col-md-6">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" id="password"
-                       #password="ngModel" [(ngModel)]="item.password" minlength="'6'"
-                       [ngModelOptions]="{updateOn: 'blur'}"
-                       ngModel required/>
-                <small class="form-text text-muted danger"
-                       *ngIf="!password.valid && (password.dirty || password.touched)">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  id="password"
+                  #password="ngModel"
+                  [(ngModel)]="item.password"
+                  minlength="'6'"
+                  [ngModelOptions]="{ updateOn: 'blur' }"
+                  ngModel
+                  required
+                />
+                <small
+                  class="form-text text-muted danger"
+                  *ngIf="
+                    !password.valid && (password.dirty || password.touched)
+                  "
+                >
                   Password is required
                 </small>
               </div>
 
               <div class="form-group col-md-6">
                 <label for="cPassword">Confirm Password</label>
-                <input type="password" class="form-control" id="cPassword" name="cPassword"
-                       #cPassword="ngModel" [ngModelOptions]="{updateOn: 'blur'}" [(ngModel)]="item.confirmedPassword"
-                       minlength="'6'" ngModel required [equalTo]="password">
-                <small class="form-text text-muted danger"
-                       *ngIf="!cPassword.valid && (cPassword.dirty || cPassword.touched) && cPassword.errors?.equalTo">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="cPassword"
+                  name="cPassword"
+                  #cPassword="ngModel"
+                  [ngModelOptions]="{ updateOn: 'blur' }"
+                  [(ngModel)]="item.confirmedPassword"
+                  minlength="'6'"
+                  ngModel
+                  required
+                  [equalTo]="password"
+                />
+                <small
+                  class="form-text text-muted danger"
+                  *ngIf="
+                    !cPassword.valid &&
+                    (cPassword.dirty || cPassword.touched) &&
+                    cPassword.errors?.equalTo
+                  "
+                >
                   Confirm Password do not match
                 </small>
               </div>
@@ -122,13 +205,22 @@
                 <div class="form-group">
                   <label for="authorities">Authorities</label>
                   <div class="input-group">
-                    <p-multiSelect id="authorities" name="authorities" [resetFilterOnHide]="true"
-                                   optionLabel="name" [options]="authorities" #cc="ngModel"
-                                   required [(ngModel)]="item.authorities">
+                    <p-multiSelect
+                      id="authorities"
+                      name="authorities"
+                      [resetFilterOnHide]="true"
+                      optionLabel="name"
+                      [options]="authorities"
+                      #cc="ngModel"
+                      required
+                      [(ngModel)]="item.authorities"
+                    >
                     </p-multiSelect>
                   </div>
-                  <small class="form-text text-muted danger"
-                         *ngIf="!cc.valid && (cc.dirty || cc.touched)">
+                  <small
+                    class="form-text text-muted danger"
+                    *ngIf="!cc.valid && (cc.dirty || cc.touched)"
+                  >
                     Authorities is required
                   </small>
                 </div>
@@ -137,9 +229,14 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="active">Status</label>
-                  <ui-switch ngbButtonLabel="" id="active" name="active" #active="ngModel"
-                             (valueChange)="activeStatusChange($event)"
-                             [(ngModel)]="item.activeFlag">
+                  <ui-switch
+                    ngbButtonLabel=""
+                    id="active"
+                    name="active"
+                    #active="ngModel"
+                    (valueChange)="activeStatusChange($event)"
+                    [(ngModel)]="item.activeFlag"
+                  >
                   </ui-switch>
                 </div>
               </div>
@@ -147,11 +244,17 @@
             <!----------------------------Btns----------------------------->
             <div class="form-group">
               <div class="col-md-12 text-right">
-                <button type="button" class="btn btn-raised btn-raised btn-warning mr-1 shadow-z-2"
-                        (click)="onFormCancel()">
+                <button
+                  type="button"
+                  class="btn btn-raised btn-raised btn-warning mr-1 shadow-z-2"
+                  (click)="onFormCancel()"
+                >
                   <i class="ft-x"></i> Cancel
                 </button>
-                <button class="btn btn-raised btn-raised btn-primary mr-1 shadow-z-2" type="submit">
+                <button
+                  class="btn btn-raised btn-raised btn-primary mr-1 shadow-z-2"
+                  type="submit"
+                >
                   <i class="ft-check-square"></i> Save
                 </button>
               </div>

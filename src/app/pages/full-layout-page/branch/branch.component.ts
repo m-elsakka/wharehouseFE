@@ -11,7 +11,7 @@ import { ToastService } from 'src/app/shared/services/uitls/toast.service';
   styleUrls: ['./branch.component.scss'],
 })
 export class BranchListComponent extends BaseListComponent implements OnInit {
-  branchList: any = [];
+  BranchList: any = [];
   searchBranchNo: string;
   searchBranchNamea: string;
   searchBranchNamee: string;
@@ -87,13 +87,13 @@ export class BranchListComponent extends BaseListComponent implements OnInit {
   }
 
   updateFilter(event, prop) {
-    console.log(this.temp + '0000 ' + this.branchList);
+    console.log(this.temp + '0000 ' + this.itemList);
     const val = event.target.value.toLowerCase();
     // filter our data
     const temp = this.temp.filter(function (d) {
       return d[prop].toLowerCase().indexOf(val) !== -1 || !val;
     });
     // update the rows
-    this.branchList = temp;
+    this.itemList = temp;
   }
 }
