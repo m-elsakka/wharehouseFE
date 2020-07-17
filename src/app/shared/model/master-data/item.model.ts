@@ -9,5 +9,5 @@ export class ItemModel {
   totalweight: number;
   netweight: number;
   // crt_barcode: string;
-  uom: string = null;
+  // uom: string = null;
 }
