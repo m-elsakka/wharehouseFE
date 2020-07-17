@@ -1,12 +1,6 @@
-{ 
-    "distributores": "distributores",
-    "show_dist":"show distributors",
-
-    "branch":"branch"  ,
-    "dist_name":"distributore name" ,
-    "sap_code":"SAP code",
+{
+  "branch": "plant",
     "region":"region" ,
-    "type":"type",
 
 
     "generate_data":"generate data",
