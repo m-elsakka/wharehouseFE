@@ -8,6 +8,7 @@
     "region":"region" ,
     "type":"type",
 
+
     "generate_data":"generate data",
     "check":"check",
     "execute_report":"execute report",
@@ -29,7 +30,22 @@
     "discount_type":"discount type",
     "internal_order":"internal order",
 
-    "calc_total":"calculate totals"
+    "calc_total":"calculate totals",
+
+
+
+    "branchno":"branchno",
+    "branchnamea":"branchnamea",
+    "branchnamee":"branchnamee",
+
+
+    "itemno" : "itemno",
+
+    "itemnamee" : "itemnamee",
+    "itemnamea" : "itemnamea",
+    "itemtype" : "itemtype",
+    "netweight" : "netweight",
+    "uom" : "uom"
 
 
 }

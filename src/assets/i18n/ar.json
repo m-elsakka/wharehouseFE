@@ -28,6 +28,19 @@
     "discount_type":"type de remise",
     "internal_order":"internal order",
 
-    "calc_total":"calculer les totaux"
+    "calc_total":"calculer les totaux",
+
+    "branchno":"branchno",
+    "branchnamea":"branchnamea",
+    "branchnamee":"branchnamee",
+
+
+    "itemnamee" : "itemnamee",
+    "itemnamea" : "itemnamea",
+    "itemtype" : "itemtype",
+    "netweight" : "netweight",
+    "uom" : "uom"
+
+
 
 }

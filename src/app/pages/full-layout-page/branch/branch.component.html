@@ -13,7 +13,7 @@
           <div class="card-block">
             <ngx-datatable
               class="bootstrap"
-              [rows]="branchList"
+              [rows]="itemList"
               [columnMode]="'force'"
               [headerHeight]="50"
               [footerHeight]="50"
@@ -72,7 +72,15 @@
                   let-value="value"
                   let-row="row"
                 >
-                  {{ row.branchnamea }}
+                <mat-form-field>
+                  <input
+                    matInput
+                    value="branchnamea"
+                    [(ngModel)]="row.branchnamea"
+                    [disabled]="!isEditable[rowIndex]"
+                  />
+                </mat-form-field>
+                 
                 </ng-template>
               </ngx-datatable-column>
 
@@ -91,16 +99,24 @@
                   let-value="value"
                   let-row="row"
                 >
-                  {{ row.branchnamee }}
+                <mat-form-field>
+                  <input
+                    matInput
+                    value="branchnamee"
+                    [(ngModel)]="row.branchnamee"
+                    [disabled]="!isEditable[rowIndex]"
+                  />
+                </mat-form-field>
+                 
                 </ng-template>
               </ngx-datatable-column>
 
-              <ngx-datatable-column name="region">
+              <ngx-datatable-column name="active">
                 <ng-template let-column="column" ngx-datatable-header-template>
                   <input
                     type="text"
                     class="managetextfilter"
-                    placeholder="{{ 'region' | transloco }}"
+                    placeholder="{{ 'active' | transloco }}"
                     (keyup)="updateFilter($event, 'region')"
                   />
                 </ng-template>
@@ -110,7 +126,7 @@
                   let-value="value"
                   let-row="row"
                 >
-                  {{ row.region }}
+                  {{ row.active }}
                 </ng-template>
               </ngx-datatable-column>
 

@@ -20,4 +20,27 @@ export class BranchService extends BaseHttpCrudService {
   getBranchListBySearchObject(searchObject: SearchParPojo) {
     return super.findWithSearchPojo(this.serverUrl, searchObject);
   }
+
+
+  saveBranch(serviceUrl: string, branch: any, isUpdateMode: boolean) {
+    if (isUpdateMode) {
+      return this.updateBranch(serviceUrl, branch);
+    } else {
+      return this.createBranch(serviceUrl, branch);
+    }
+  }
+
+  private createBranch(serviceUrl: string, branch: any) {
+    let requestHeaders, url;
+    requestHeaders = this.headers;
+    url = serviceUrl + 'create';
+    return super.postRequest(url, branch, {headers: requestHeaders});
+  }
+
+  private updateBranch(serviceUrl: string, branch: any) {
+    let requestHeaders, url;
+    requestHeaders = this.headers;
+    url = serviceUrl + 'edit/' + branch.branchno;
+    return super.putRequest(url, branch, {headers: requestHeaders});
+  }
 }

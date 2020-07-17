@@ -73,7 +73,7 @@ export class ItemListComponent extends BaseListComponent implements OnInit {
   }
 
   saveItem(row: any) {
-    this.itemServ.saveItem(this.serviceURL, row, true).subscribe(
+    this.itemServ.saveItems(this.serviceURL, row, true).subscribe(
       (data: any) => {
         console.log(data);
         if (data.success) {
