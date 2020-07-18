@@ -1,6 +1,6 @@
 var appConfig = {
   isLive: false,
-  context: "wizard-app",
+  context: "wharehouse",
   // backendUrl: "http://localhost:8080/wharehouseBE/",
 
   // test
