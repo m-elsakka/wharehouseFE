@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://localhost:8080/wharehouseBE/',
+  baseUrl: 'http://wizard-app.lon.wafaicloud.com/wharehouseBE/',
 };
