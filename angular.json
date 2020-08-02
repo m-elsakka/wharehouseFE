@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "wharehouseFE": {
+    "wharehouse": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "wharehouseFE:build"
+            "browserTarget": "wharehouse:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "wharehouseFE:build:production"
+              "browserTarget": "wharehouse:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "wharehouseFE:build"
+            "browserTarget": "wharehouse:build"
           }
         },
         "test": {
@@ -117,16 +117,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "wharehouseFE:serve"
+            "devServerTarget": "wharehouse:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "wharehouseFE:serve:production"
+              "devServerTarget": "wharehouse:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "wharehouseFE"
+  "defaultProject": "wharehouse"
 }

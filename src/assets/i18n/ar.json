@@ -1,47 +1,22 @@
 {
-    "distributores":"distributeurs",
-    "show_dist":"afficher distributeurs",
+  "branch": "branche",
 
-    "branch":"branche" ,
-    "dist_name":"nom du distributeur",
-    "sap_code":"SAP code" ,
-    "region":"Région" ,
-    "type":"type",
+  "branchno": "branchno",
+  "branchnamea": "branchnamea",
+  "branchnamee": "branchnamee",
+  "active": "active",
 
-    "generate_data":"générer des données",
-    "check":"vérifier",
-    "execute_report":"exécuter le report",
-    "confirm":"confirmer",
-    "Charge_to_ECC":"Charge vers ECC",
+  "itemnamee": "itemnamee",
+  "itemnamea": "itemnamea",
+  "itemtype": "itemtype",
+  "netweight": "netweight",
+  "uom": "uom",
 
-    "parameter" : "paramètre",
-    "description":"description",
-    "value":"valeur",
+  "customernamee": "اسم العميل بالانجليزية",
+  "customernamea": "اسم العميل بالعربية",
+  "customerno": "رقم العميل",
 
-    "scenario" : "scénario",
-    "condition_type":"type de condition",
-    "onInvoice":"on Invoice",
-
-
-    "article":"article",
-    "discount":"remise",
-    "discount_type":"type de remise",
-    "internal_order":"internal order",
-
-    "calc_total":"calculer les totaux",
-
-    "branchno":"branchno",
-    "branchnamea":"branchnamea",
-    "branchnamee":"branchnamee",
-    "active":"active",
-
-
-    "itemnamee" : "itemnamee",
-    "itemnamea" : "itemnamea",
-    "itemtype" : "itemtype",
-    "netweight" : "netweight",
-    "uom" : "uom"
-
-
-
+  "cabinetnamee": "اسم الثلاجة بالانجليزية",
+  "cabinetnamea": "اسم الثلاجة بالعربية",
+  "cabinetno": "رقم الثلاجة"
 }

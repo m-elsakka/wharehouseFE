@@ -1,46 +1,25 @@
 {
   "branch": "plant",
-    "region":"region" ,
+  "region": "region",
 
+  "branchno": "branchno",
+  "branchnamea": "branchnamea",
+  "branchnamee": "branchnamee",
+  "active": "active",
 
-    "generate_data":"generate data",
-    "check":"check",
-    "execute_report":"execute report",
-    "confirm":"confirm",
-    "Charge_to_ECC":"Charge to ECC",
+  "itemno": "itemno",
 
+  "itemnamee": "itemnamee",
+  "itemnamea": "itemnamea",
+  "itemtype": "itemtype",
+  "netweight": "netweight",
+  "uom": "uom",
 
-    "parameter" : "parameter",
-    "description":"description",
-    "value":"value",
+  "customernamee": "customernamee",
+  "customernamea": "customernamea",
+  "customerno": "customerno",
 
-
-    "scenario" : "scenario",
-    "condition_type":"condition type",
-    "onInvoice":"on Invoice",
-
-    "article":"Itemno",
-    "discount":"discount",
-    "discount_type":"discount type",
-    "internal_order":"internal order",
-
-    "calc_total":"calculate totals",
-
-
-
-    "branchno":"branchno",
-    "branchnamea":"branchnamea",
-    "branchnamee":"branchnamee",
-    "active":"active",
-
-
-    "itemno" : "itemno",
-
-    "itemnamee" : "itemnamee",
-    "itemnamea" : "itemnamea",
-    "itemtype" : "itemtype",
-    "netweight" : "netweight",
-    "uom" : "uom"
-
-
+  "cabinetnamee": "cabinetnamee",
+  "cabinetnamea": "cabinetnamea",
+  "cabinetno": "cabinetno"
 }

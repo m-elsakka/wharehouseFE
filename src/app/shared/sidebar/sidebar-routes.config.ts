@@ -2,6 +2,30 @@ import { RouteInfo } from './sidebar.metadata';
 
 export const ROUTES: RouteInfo[] = [
   {
+    path: '/full-layout/cabinet',
+    title: 'Cabinets',
+    icon: 'ft-layout',
+    class: '',
+    badge: '',
+    badgeClass: '',
+    isExternalLink: false,
+    submenu: [],
+    isMenu: true,
+    authorities: ['ROLE_ADMIN', 'ROLE_USERMANAGEMENT'],
+  },
+  {
+    path: '/full-layout/user',
+    title: 'Users',
+    icon: 'ft-layout',
+    class: '',
+    badge: '',
+    badgeClass: '',
+    isExternalLink: false,
+    submenu: [],
+    isMenu: true,
+    authorities: ['ROLE_ADMIN', 'ROLE_USERMANAGEMENT'],
+  },
+  {
     path: '/full-layout/branch',
     title: 'Plants',
     icon: 'ft-layout',
@@ -26,8 +50,8 @@ export const ROUTES: RouteInfo[] = [
     authorities: ['ROLE_ADMIN', 'ROLE_MASTERDATA'],
   },
   {
-    path: '/full-layout/user',
-    title: 'Users',
+    path: '/full-layout/customer',
+    title: 'Customers',
     icon: 'ft-layout',
     class: '',
     badge: '',

@@ -5,8 +5,18 @@ import { UserListComponent } from './user-hier/user-list/user-list.component';
 import { AuthoritiesGuardService } from 'src/app/shared/services/auth/authorities-guard.service';
 import { ItemListComponent } from './item/item.component';
 import { BranchListComponent } from './branch/branch.component';
+import { CustomerListComponent } from './customer/customer.component';
+import { CabinetListComponent } from './cabinet/cabinet.component';
 
 const routes: Routes = [
+  {
+    path: 'cabinet',
+    component: CabinetListComponent,
+    canActivate: [AuthoritiesGuardService],
+    data: {
+      title: 'Cabinets',
+    },
+  },
   {
     path: 'branch',
     component: BranchListComponent,
@@ -29,6 +39,14 @@ const routes: Routes = [
     canActivate: [AuthoritiesGuardService],
     data: {
       title: 'Users',
+    },
+  },
+  {
+    path: 'customer',
+    component: CustomerListComponent,
+    canActivate: [AuthoritiesGuardService],
+    data: {
+      title: 'Customers',
     },
   },
   {

@@ -39,6 +39,10 @@ import { UserComponent } from './user-hier/user/user.component';
 import { BaseHttpCrudService } from 'src/app/shared/services/base/base-http-crud.service';
 import { CustomFormsModule } from 'ng2-validation';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { CustomerListComponent } from './customer/customer.component';
+import { CustomerService } from 'src/app/shared/services/master-data/customer.service';
+import { CabinetService } from 'src/app/shared/services/master-data/cabinet.service';
+import { CabinetListComponent } from './cabinet/cabinet.component';
 
 @NgModule({
   imports: [
@@ -69,6 +73,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     UserComponent,
     BranchListComponent,
     ItemListComponent,
+    CustomerListComponent,
+    CabinetListComponent,
   ],
   providers: [
     BaseHttpCrudService,
@@ -78,6 +84,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     UserManagerService,
     ItemService,
     BranchService,
+    CustomerService,
+    CabinetService,
   ],
 })
 export class FullPagesModule {}

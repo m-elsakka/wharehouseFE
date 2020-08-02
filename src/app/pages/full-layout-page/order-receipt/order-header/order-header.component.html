@@ -1,0 +1,122 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header">Order Receipt</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-block">
+          <form
+            class="form"
+            (ngSubmit)="onFormSubmit()"
+            #submitItemForm="ngForm"
+          >
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="transno">{{ "transno" | transloco }}</label>
+                  <input
+                    class="form-control"
+                    id="transno"
+                    name="transno"
+                    [(ngModel)]="item.transno"
+                    [disabled]="true"
+                  />
+                </div>
+              </div>
+            </div>
+            <!-- <div class="row"> -->
+            <div class="form-group">
+              <div class="col-md-12 text-right">
+                <button
+                  class="btn btn-raised btn-raised btn-info mr-1 shadow-z-2"
+                  type="button"
+                  (click)="addNewOrderReceiptDetails()"
+                >
+                  <i class="ft-plus-square"></i> Add Details
+                </button>
+
+                <button
+                  class="btn btn-raised btn-raised btn-warning mr-1 shadow-z-2"
+                  *ngIf="canAssign"
+                  (click)="clearOrderReceiptDetails()"
+                  type="button"
+                >
+                  <i class="ft-x"></i> Clear All Details
+                </button>
+              </div>
+              <!-- </div> -->
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div
+                  class="accordion"
+                  *ngIf="item.stkTransDetailsList.length > 0"
+                >
+                  <p-accordion>
+                    <p-accordionTab
+                      *ngFor="
+                        let detail of item.stkTransDetailsList;
+                        let idx = index
+                      "
+                    >
+                      <p-header>
+                        <label class="accordion-header col-sm-10">
+                          {{ detail.productiondate }} - {{ detail.itemno }} -
+                          {{ detail.qcrt }} -
+                          {{ detail.itemweight }}
+                        </label>
+                        <button
+                          class="btn btn-raised btn-raised btn-danger mr-1 shadow-z-2 text-right"
+                          type="button"
+                          (click)="removeNewAddedDetail(idx)"
+                        >
+                          <i class="ft-x"></i>
+                        </button>
+                      </p-header>
+                      <app-order-receipt-detail [detail]="detail">
+                      </app-order-receipt-detail>
+                    </p-accordionTab>
+                  </p-accordion>
+                </div>
+              </div>
+            </div>
+            <br />
+            <!----------------------------Btns----------------------------->
+            <!-- <div class="row"> -->
+            <div class="form-group">
+              <div class="col-md-12 text-right">
+                <button
+                  type="button"
+                  class="btn btn-raised btn-raised btn-warning mr-1 shadow-z-2"
+                  (click)="onFormCancel()"
+                >
+                  <i class="ft-x"></i> Cancel
+                </button>
+                <button
+                  class="btn btn-raised btn-raised btn-primary mr-1 shadow-z-2"
+                  type="submit"
+                >
+                  <i class="ft-check-square"></i> Save
+                </button>
+                <input
+                  #uploadOrderReceiptFile
+                  id="uploadOrderReceipt"
+                  type="file"
+                  *ngIf="isUpdateMode"
+                  class="btn btn-raised btn-info mr-1 shadow-z-2"
+                  (change)="uploadOrderReceiptHeader($event)"
+                  accept="xls"
+                />
+              </div>
+            </div>
+            <!-- </div> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
