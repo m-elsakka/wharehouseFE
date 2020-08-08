@@ -83,13 +83,13 @@ export class CustomerListComponent extends BaseListComponent implements OnInit {
   }
 
   updateFilter(event, prop) {
-    console.log(this.temp + '0000 ' + this.customerList);
+    console.log(this.temp + '0000 ' + this.itemList);
     const val = event.target.value.toLowerCase();
     // filter our data
     const temp = this.temp.filter(function (d) {
       return d[prop].toLowerCase().indexOf(val) !== -1 || !val;
     });
     // update the rows
-    this.customerList = temp;
+    this.itemList = temp;
   }
 }

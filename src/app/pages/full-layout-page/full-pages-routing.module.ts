@@ -7,6 +7,7 @@ import { ItemListComponent } from './item/item.component';
 import { BranchListComponent } from './branch/branch.component';
 import { CustomerListComponent } from './customer/customer.component';
 import { CabinetListComponent } from './cabinet/cabinet.component';
+import { UserComponent } from './user-hier/user/user.component';
 
 const routes: Routes = [
   {

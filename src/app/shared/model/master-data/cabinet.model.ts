@@ -1,5 +1,6 @@
 export class CabinetModel {
   cabinetno: string;
-  cabinetnamee: string;
   cabinetnamea: string;
+  cabinetnamee: string;
+  active: string
 }

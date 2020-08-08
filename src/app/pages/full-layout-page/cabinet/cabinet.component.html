@@ -1,7 +1,7 @@
 <div id="ItemsId">
   <div class="row">
     <div class="col-sm-12">
-      <div class="content-header ivf-content-header"></div>
+      <div class="content-header ivf-content-header"> Cabinet</div>
     </div>
   </div>
 
@@ -13,7 +13,7 @@
           <div class="card-block">
             <ngx-datatable
               class="bootstrap"
-              [rows]="cabinetList"
+              [rows]="itemList"
               [columnMode]="'force'"
               [headerHeight]="50"
               [footerHeight]="50"
@@ -108,6 +108,25 @@
                   </mat-form-field>
                 </ng-template>
               </ngx-datatable-column>
+
+             <ngx-datatable-column name="active">
+              <ng-template let-column="column" ngx-datatable-header-template>
+                <input
+                  type="text"
+                  class="managetextfilter"
+                  placeholder="{{ 'active' | transloco }}"
+                  (keyup)="updateFilter($event, 'region')"
+                />
+              </ng-template>
+              <ng-template
+                ngx-datatable-cell-template
+                let-rowIndex="rowIndex"
+                let-value="value"
+                let-row="row"
+              >
+                {{ row.active }} 
+              </ng-template>
+            </ngx-datatable-column>
 
               <ngx-datatable-column name="Action">
                 <ng-template

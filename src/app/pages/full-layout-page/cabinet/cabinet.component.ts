@@ -15,6 +15,7 @@ export class CabinetListComponent extends BaseListComponent implements OnInit {
   searchCabinetno: string;
   searchCabinetNamee: string;
   searchCabinetNamea: string;
+  searchActive: string;
 
   rows = [];
   isEditable = {};
@@ -30,6 +31,7 @@ export class CabinetListComponent extends BaseListComponent implements OnInit {
     this.searchCabinetno = 'all';
     this.searchCabinetNamee = 'all';
     this.searchCabinetNamea = 'all';
+    this.searchActive = 'all';
     this.serviceURL = this.cabinetServ.serverUrl;
     this.getAllCabinet();
   }
@@ -82,13 +84,13 @@ export class CabinetListComponent extends BaseListComponent implements OnInit {
   }
 
   updateFilter(event, prop) {
-    console.log(this.temp + '0000 ' + this.cabinetList);
+    console.log(this.temp + '0000 ' + this.itemList);
     const val = event.target.value.toLowerCase();
     // filter our data
     const temp = this.temp.filter(function (d) {
       return d[prop].toLowerCase().indexOf(val) !== -1 || !val;
     });
     // update the rows
-    this.cabinetList = temp;
+    this.itemList = temp;
   }
 }
