@@ -49,14 +49,14 @@ export class UserComponent extends BaseItemComponent implements OnInit {
   }
 
   setPasswordRequired() {
-    for (let i = 0; i < this.item.authorities.length; i++) {
-      let auth;
-      auth = this.item.authorities[i];
-      if (auth.name === 'ROLE_SALES_FORCE') {
-        return true;
-      }
-    }
-    return false;
+    // for (let i = 0; i < this.item.authorities.length; i++) {
+    //   let auth;
+    //   auth = this.item.authorities[i];
+    //   if (auth.name === 'ROLE_SALES_FORCE') {
+    //     return true;
+    //   }
+    // }
+    return true;
   }
 
   private getBranches() {

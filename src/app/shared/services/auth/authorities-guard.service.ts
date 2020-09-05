@@ -1,28 +1,31 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {AuthService} from './auth.service';
-import {ROUTES} from '../../sidebar/sidebar-routes.config';
-import {RouteInfo} from '../../sidebar/sidebar.metadata';
+import { Injectable } from '@angular/core';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
+import { AuthService } from './auth.service';
+import { ROUTES } from '../../sidebar/sidebar-routes.config';
+import { RouteInfo } from '../../sidebar/sidebar.metadata';
 
 declare var $: any;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthoritiesGuardService implements CanActivate {
-
-  constructor(private authService: AuthService, private router: Router) {
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let canAccess;
     canAccess = false;
     $.getScript('./assets/js/app-sidebar.js');
-    const menuItems = ROUTES.filter(menuItem => menuItem);
+    const menuItems = ROUTES.filter((menuItem) => menuItem);
     const url = state.url;
     let requtestPage: RouteInfo;
     for (let i = 0; i < menuItems.length; i++) {
-      if ( url.includes(menuItems[i].path)) {
+      if (url.includes(menuItems[i].path)) {
         requtestPage = menuItems[i];
         break;
       }

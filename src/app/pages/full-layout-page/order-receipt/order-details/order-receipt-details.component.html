@@ -1,0 +1,136 @@
+<div id="ItemsId">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="content-header ivf-content-header">
+        STK Transaction Receipt Details
+      </div>
+    </div>
+  </div>
+
+  <!--DATA-TABLE-->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-block">
+            <ngx-datatable
+              class="bootstrap"
+              [rows]="itemList"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="searchingObject.size"
+              [externalPaging]="true"
+              [count]="dataTableCount"
+              [offset]="searchingObject.page"
+              (page)="setPage($event)"
+            >
+              <!-- Row Panel Template -->
+              <ngx-datatable-row-detail [rowHeight]="100" #myDetailRow>
+                <ng-template
+                  let-row="row"
+                  let-expanded="expanded"
+                  ngx-datatable-row-detail-template
+                >
+                  <div>
+                    TEST TEST
+                  </div>
+                </ng-template>
+              </ngx-datatable-row-detail>
+
+              <ngx-datatable-column name="itemno">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                  <input
+                    type="text"
+                    class="managetextfilter"
+                    placeholder="{{ 'itemno' | transloco }}"
+                    (keyup)="updateFilter($event, 'itemno')"
+                  />
+                </ng-template>
+
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-value="value"
+                  let-row="row"
+                >
+                  {{ row.itemno }}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <!-- <ngx-datatable-column name="productiondate" [width]="185">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                  <input type="date"
+                        [value]="row.productiondate | date:'yyyy-MM-dd'" name="productiondate"
+                        (keyup)="updateFilter($event, 'productiondate')"/>
+
+                </ng-template>
+              </ngx-datatable-column> -->
+
+              <ngx-datatable-column name="qcrt">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                  <input
+                    type="text"
+                    class="managetextfilter"
+                    placeholder="{{ 'qcrt' | transloco }}"
+                    (keyup)="updateFilter($event, 'qcrt')"
+                  />
+                </ng-template>
+
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-value="value"
+                  let-row="row"
+                >
+                  {{ row.qcrt }}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="itemweight">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                  <input
+                    type="text"
+                    class="managetextfilter"
+                    placeholder="{{ 'itemweight' | transloco }}"
+                    (keyup)="updateFilter($event, 'itemweight')"
+                  />
+                </ng-template>
+
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-value="value"
+                  let-row="row"
+                >
+                  {{ row.itemweight }}
+                </ng-template>
+              </ngx-datatable-column>
+
+              <ngx-datatable-column name="itemprice">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                  <input
+                    type="text"
+                    class="managetextfilter"
+                    placeholder="{{ 'itemprice' | transloco }}"
+                    (keyup)="updateFilter($event, 'itemprice')"
+                  />
+                </ng-template>
+
+                <ng-template
+                  ngx-datatable-cell-template
+                  let-rowIndex="rowIndex"
+                  let-value="value"
+                  let-row="row"
+                >
+                  {{ row.itemprice }}
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

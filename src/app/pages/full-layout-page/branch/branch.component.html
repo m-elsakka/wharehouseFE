@@ -1,169 +1,108 @@
-<div id="BranchesId">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="content-header ivf-content-header"> Branches</div>
-    </div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="content-header"></div>
   </div>
+</div>
 
-  <!--DATA-TABLE-->
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="card-block">
-            <ngx-datatable
-              class="bootstrap"
-              [rows]="itemList"
-              [columnMode]="'force'"
-              [headerHeight]="50"
-              [footerHeight]="50"
-              [rowHeight]="'auto'"
-              [limit]="searchingObject.size"
-              [externalPaging]="true"
-              [count]="dataTableCount"
-              [offset]="searchingObject.page"
-              (page)="setPage($event)"
-            >
-              <!-- Row Panel Template -->
-              <ngx-datatable-row-detail [rowHeight]="100" #myDetailRow>
-                <ng-template
-                  let-row="row"
-                  let-expanded="expanded"
-                  ngx-datatable-row-detail-template
-                >
-                  <div>
-                    TEST TEST
-                  </div>
-                </ng-template>
-              </ngx-datatable-row-detail>
+<!--DATA-TABLE-->
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
 
-              <ngx-datatable-column name="branchno">
-                <ng-template let-column="column" ngx-datatable-header-template>
-                  <input
-                    type="text"
-                    class="managetextfilter"
-                    placeholder="{{ 'plantno' | transloco }}"
-                    (keyup)="updateFilter($event, 'branchno')"
-                  />
-                </ng-template>
+        <!--ADD BUTTON-->
+        <div class="card-block">
+          <button (click)="addNewRow()" class="btn btn-raised btn-success mr-1 shadow-z-2" [(disabled)]="!isUpdateMode">
+            <i class="ft-plus mr-2"> Add</i>
+          </button>
+        </div>
 
-                <ng-template
-                  ngx-datatable-cell-template
-                  let-rowIndex="rowIndex"
-                  let-value="value"
-                  let-row="row"
-                >
-                  {{ row.branchno }}
-                </ng-template>
-              </ngx-datatable-column>
+        <div class="card-block">
+          <ngx-datatable class="bootstrap" [rows]="itemList" [columnMode]="'force'" [headerHeight]="50"
+            [footerHeight]="50" [rowHeight]="'auto'" [limit]="searchingObject.size" [externalPaging]="true"
+            [count]="dataTableCount" [offset]="searchingObject.page" (page)="setPage($event)">
 
-              <ngx-datatable-column name="branchnamea">
-                <ng-template let-column="column" ngx-datatable-header-template>
-                  <input
-                    type="text"
-                    class="managetextfilter"
-                    placeholder="{{ 'plantnamea' | transloco }}"
-                    (keyup)="updateFilter($event, 'branchnamea')"
-                  />
-                </ng-template>
-                <ng-template
-                  ngx-datatable-cell-template
-                  let-rowIndex="rowIndex"
-                  let-value="value"
-                  let-row="row"
-                >
+            <!-- Row Panel Template -->
+            <ngx-datatable-row-detail [rowHeight]="100" #myDetailRow>
+              <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+                <div>TEST TEST</div>
+              </ng-template>
+            </ngx-datatable-row-detail>
+
+            <ngx-datatable-column name="branchno">
+              <ng-template let-column="column" ngx-datatable-header-template>
+                <input type="text" class="managetextfilter" placeholder="{{ 'plantno' | transloco }}"
+                  (keyup)="updateFilter($event, 'branchno')" />
+              </ng-template>
+
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
                 <mat-form-field>
-                  <input
-                    matInput
-                    value="branchnamea"
-                    [(ngModel)]="row.branchnamea"
-                    [disabled]="!isEditable[rowIndex]"
-                  />
-                </mat-form-field>
-                 
-                </ng-template>
-              </ngx-datatable-column>
+                  <input matInput value="branchno" [(ngModel)]="row.branchno"
+                    [disabled]="!isEditable[rowIndex] || !isAddMode[rowIndex]" required />
 
-              <ngx-datatable-column name="branchnamee">
-                <ng-template let-column="column" ngx-datatable-header-template>
-                  <input
-                    type="text"
-                    class="managetextfilter"
-                    placeholder="{{ 'plantnamee' | transloco }}"
-                    (keyup)="updateFilter($event, 'branchnamee')"
-                  />
-                </ng-template>
-                <ng-template
-                  ngx-datatable-cell-template
-                  let-rowIndex="rowIndex"
-                  let-value="value"
-                  let-row="row"
-                >
+                  <mat-error class="form-text text-muted danger">This field is required</mat-error>
+                </mat-form-field>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="branchnamea">
+              <ng-template let-column="column" ngx-datatable-header-template>
+                <input type="text" class="managetextfilter" placeholder="{{ 'plantnamea' | transloco }}"
+                  (keyup)="updateFilter($event, 'branchnamea')" />
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
                 <mat-form-field>
-                  <input
-                    matInput
-                    value="branchnamee"
-                    [(ngModel)]="row.branchnamee"
-                    [disabled]="!isEditable[rowIndex]"
-                  />
+                  <input matInput value="branchnamea" [(ngModel)]="row.branchnamea" [disabled]="!isEditable[rowIndex]"
+                    required />
+
+                  <mat-error class="form-text text-muted danger">This field is required</mat-error>
                 </mat-form-field>
-                 
-                </ng-template>
-              </ngx-datatable-column>
+              </ng-template>
+            </ngx-datatable-column>
 
-              <ngx-datatable-column name="active">
-                <ng-template let-column="column" ngx-datatable-header-template>
-                  <input
-                    type="text"
-                    class="managetextfilter"
-                    placeholder="{{ 'active' | transloco }}"
-                    (keyup)="updateFilter($event, 'region')"
-                  />
-                </ng-template>
-                <ng-template
-                  ngx-datatable-cell-template
-                  let-rowIndex="rowIndex"
-                  let-value="value"
-                  let-row="row"
-                >
-                  {{ row.active }}
-                </ng-template>
-              </ngx-datatable-column>
+            <ngx-datatable-column name="branchnamee">
+              <ng-template let-column="column" ngx-datatable-header-template>
+                <input type="text" class="managetextfilter" placeholder="{{ 'plantnamee' | transloco }}"
+                  (keyup)="updateFilter($event, 'branchnamee')" />
+              </ng-template>
+              <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                <mat-form-field>
+                  <input matInput value="branchnamee" [(ngModel)]="row.branchnamee" [disabled]="!isEditable[rowIndex]"
+                    required />
 
-              <ngx-datatable-column name="Action">
-                <ng-template
-                  let-value="value"
-                  let-row="row"
-                  let-rowIndex="rowIndex"
-                  ngx-datatable-cell-template
-                >
+                  <mat-error class="form-text text-muted danger">This field is required</mat-error>
+                </mat-form-field>
+              </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Action">
+              <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                <div class="btn-group mr-2">
                   <!-- Pencil icon -->
-                  <i
-                    class="fa fa-pencil"
-                    title="Modify"
-                    *ngIf="!this.isEditable[rowIndex]"
-                    (click)="
+                  <button md-icon-button class="fa fa-pencil datatable-btn" title="Modify"
+                    *ngIf="!this.isEditable[rowIndex]" (click)="
                       this.isEditable[rowIndex] = !this.isEditable[rowIndex]
-                    "
-                  ></i>
+                    "></button>
+                </div>
 
-                  <!-- Save/Delete icons -->
-                  <i
-                    class="fa fa-floppy-o"
-                    *ngIf="this.isEditable[rowIndex]"
-                    title="Save"
-                    (click)="save(row, rowIndex)"
-                  ></i>
-                  <i
-                    class="fa fa-close"
-                    *ngIf="this.isEditable[rowIndex]"
-                    title="Delete"
-                    (click)="delete(row, rowIndex)"
-                  ></i>
-                </ng-template>
-              </ngx-datatable-column>
-            </ngx-datatable>
-          </div>
+                <div class="btn-group mr-2">
+                  <button md-icon-button class="fa fa-trash datatable-btn" title="Delete"
+                    *ngIf="!this.isEditable[rowIndex]"
+                    (click)="deleteItem(row.branchno); this.isUpdateMode = true"></button>
+                </div>
+                <!-- Save/Delete icons -->
+                <div class="btn-group mr-2">
+                  <button md-icon-button title="Save" class="fa fa-floppy-o datatable-btn"
+                    *ngIf="this.isEditable[rowIndex]" (click)="save(row, rowIndex)">
+                    <!-- <i class="fa fa-floppy-o"></i> -->
+                  </button>
+
+                  <button md-icon-button class="fa fa-close datatable-btn" title="Delete"
+                    *ngIf="this.isEditable[rowIndex]" (click)="delete(row, rowIndex)"></button>
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
         </div>
       </div>
     </div>

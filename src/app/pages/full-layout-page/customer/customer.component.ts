@@ -19,6 +19,7 @@ export class CustomerListComponent extends BaseListComponent implements OnInit {
 
   rows = [];
   isEditable = {};
+  isAddMode = {};
 
   @ViewChild('searchForm') searchForm: NgForm;
 
@@ -37,6 +38,7 @@ export class CustomerListComponent extends BaseListComponent implements OnInit {
 
   ngOnInit(): void {
     super.init();
+    this.isUpdateMode = true;
   }
 
   getAllCustomer() {
@@ -53,33 +55,88 @@ export class CustomerListComponent extends BaseListComponent implements OnInit {
     );
   }
 
+  validationCustomer(rowIndex) {
+    let isValid = true;
+    let detail;
+    detail = this.itemList[rowIndex];
+    if (
+      detail.customerno === undefined ||
+      detail.customerno === null ||
+      detail.customernamee === undefined ||
+      detail.customernamee === null ||
+      detail.customernamea === undefined ||
+      detail.customernamea === null
+    ) {
+      isValid = false;
+      return isValid;
+    }
+    return isValid;
+  }
+
   save(row, rowIndex) {
-    this.isEditable[rowIndex] = !this.isEditable[rowIndex];
-    console.log('Row saved: ' + rowIndex);
-    console.log(row);
-    this.saveCustomer(row);
+    if (this.validationCustomer(rowIndex)) {
+      this.isEditable[rowIndex] = !this.isEditable[rowIndex];
+      if (this.isAddMode[rowIndex]) {
+        this.saveCustomer(row, false);
+        this.isUpdateMode = true;
+      } else {
+        this.saveCustomer(row, true);
+      }
+
+      this.isAddMode[rowIndex] = false;
+      console.log('Row saved: ' + rowIndex);
+      console.log(row);
+    } else {
+      this.toast.setErrorMsg('Customer is not valid!');
+    }
+  }
+
+  // Add new row
+  addNewRow() {
+    this.newItem = new CustomerModel();
+    let rowIndx = this.dataTableCount++;
+    this.temp = [...this.temp, this.newItem];
+    this.itemList = this.temp;
+
+    this.isEditable[rowIndx] = true; // enable editable fields
+    this.isAddMode[rowIndx] = true; //enable sequence field
+    this.isUpdateMode = false; //disable add button
+
+    console.log('New row added ' + this.newItem + '0000 ' + rowIndx);
   }
 
   // Delete row
   delete(row, rowIndex) {
-    this.isEditable[rowIndex] = !this.isEditable[rowIndex];
+    if (this.isAddMode[rowIndex]) {
+      this.isEditable[rowIndex] = false;
+      this.isUpdateMode = true;
+
+      this.temp = [...this.itemList];
+      this.temp.splice(rowIndex, 1);
+      this.itemList = [...this.temp];
+      this.dataTableCount--;
+    } else {
+      this.isEditable[rowIndex] = !this.isEditable[rowIndex];
+    }
     console.log('Row deleted: ' + rowIndex);
   }
 
-  saveCustomer(row: any) {
-    this.customerServ.saveCustomers(this.serviceURL, row, true).subscribe(
-      (data: any) => {
-        console.log(data);
-        if (data.success) {
-          this.toast.setSuccessMsg('Customer saved', '');
-        } else {
-          this.toast.setErrorMsg(data.exceptionMessage);
+  saveCustomer(row: any, isUpdateMode: boolean) {
+    this.customerServ
+      .saveCustomers(this.serviceURL, row, isUpdateMode)
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          if (data.success) {
+            this.toast.setSuccessMsg('Customer saved', '');
+          } else {
+            this.toast.setErrorMsg(data.exceptionMessage);
+          }
+        },
+        (error: any) => {
+          this.toast.setErrorMsg(error.error);
         }
-      },
-      (error: any) => {
-        this.toast.setErrorMsg(error.error);
-      }
-    );
+      );
   }
 
   updateFilter(event, prop) {

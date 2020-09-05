@@ -6,27 +6,18 @@ export class UserModel {
   firstName: string;
   lastName: string;
   jobDescription: string;
-  userLevelId: number;
+  // userLevelId: number;
   active: number;
   activeFlag: boolean;
   lineManagerId: number;
   branchNo: string;
-  isS2AccountFlag: boolean;
-  isS2Account: number;
+  // isS2AccountFlag: boolean;
+  // isS2Account: number;
   password: string;
   confirmedPassword: string;
   authorities: AuthorityModel[];
 
-  // constructor(
-  //   username?: string,
-  //   password?: string,
-  //   encrypted?: boolean,
-  //   token?: string
-  // ) {
-  //   this.userName = username;
-  //   this.password = password;
-  //   this.encrypted = encrypted;
-  //   this.token = token;
-  //   this.authorities = [];
-  // }
+  constructor() {
+    this.authorities = [];
+  }
 }

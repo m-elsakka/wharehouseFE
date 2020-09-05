@@ -8,6 +8,10 @@ import { BranchListComponent } from './branch/branch.component';
 import { CustomerListComponent } from './customer/customer.component';
 import { CabinetListComponent } from './cabinet/cabinet.component';
 import { UserComponent } from './user-hier/user/user.component';
+import { OrderReceiptDetailsComponent } from './order-receipt/order-details/order-receipt-details.component';
+import { OrderReceiptHeaderComponent } from './order-receipt/order-header/order-receipt-header.component';
+import { OrderIssueHeaderComponent } from './order-issue/order-header/order-issue-header.component';
+import { OrderIssueDetailsComponent } from './order-issue/order-details/order-issue-details.component';
 
 const routes: Routes = [
   {
@@ -35,7 +39,7 @@ const routes: Routes = [
     },
   },
   {
-    path: 'user',
+    path: 'user-list',
     component: UserListComponent,
     canActivate: [AuthoritiesGuardService],
     data: {
@@ -50,6 +54,46 @@ const routes: Routes = [
       title: 'Customers',
     },
   },
+  {
+    path: 'stk-trans-receipt',
+    component: OrderReceiptHeaderComponent,
+    canActivate: [AuthoritiesGuardService],
+    data: {
+      title: 'STK Receipt',
+    },
+  },
+  {
+    path: 'order-receipt-details/:transno',
+    component: OrderReceiptDetailsComponent,
+    canActivate: [AuthoritiesGuardService],
+    data: {
+      title: 'STK Receipt Details',
+    },
+  },
+  {
+    path: 'stk-trans-issue',
+    component: OrderIssueHeaderComponent,
+    canActivate: [AuthoritiesGuardService],
+    data: {
+      title: 'STK Issue',
+    },
+  },
+  {
+    path: 'order-issue-details/:transno',
+    component: OrderIssueDetailsComponent,
+    canActivate: [AuthoritiesGuardService],
+    data: {
+      title: 'STK Issue Details',
+    },
+  },
+  // {
+  //   path: 'reports',
+  //   component: BaseReportComponent,
+  //   canActivate: [AuthoritiesGuardService],
+  //   data: {
+  //     title: 'Report',
+  //   },
+  // },
   {
     path: 'access-denied',
     component: AccessDeniedComponent,

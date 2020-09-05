@@ -22,6 +22,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     $.getScript('./assets/js/app-sidebar.js');
+    $.getScript('./assets/js/perfect-scrollbar.jquery.min.js');
     const temp = ROUTES.filter((menuItem) => menuItem);
     this.menuItems = [];
     let authorities = this.authSer.authorities;

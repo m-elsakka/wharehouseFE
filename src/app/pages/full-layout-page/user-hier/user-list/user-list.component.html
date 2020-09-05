@@ -1,7 +1,7 @@
 <div id="teamleadAssignId" *ngIf="!renderForm">
   <div class="row">
     <div class="col-sm-12">
-      <div class="content-header ivf-content-header">Users</div>
+      <div class="content-header ivf-content-header"></div>
     </div>
   </div>
 
@@ -16,45 +16,27 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="searchUserName">User name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="searchUserName"
-                      name="searchUserName"
-                      #UserName="ngModel"
-                      [(ngModel)]="searchUserName"
-                    />
+                    <input type="text" class="form-control" id="searchUserName" name="searchUserName"
+                      #UserName="ngModel" [(ngModel)]="searchUserName" />
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="searchFirstName">First name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="searchFirstName"
-                      name="searchFirstName"
-                      #firstName="ngModel"
-                      [(ngModel)]="searchFirstName"
-                    />
+                    <input type="text" class="form-control" id="searchFirstName" name="searchFirstName"
+                      #firstName="ngModel" [(ngModel)]="searchFirstName" />
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="searchLastName">Last name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="searchLastName"
-                      name="searchLastName"
-                      #lastName="ngModel"
-                      [(ngModel)]="searchLastName"
-                    />
+                    <input type="text" class="form-control" id="searchLastName" name="searchLastName"
+                      #lastName="ngModel" [(ngModel)]="searchLastName" />
                   </div>
                 </div>
               </div>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="searchJobDescription">Job Description</label>
@@ -84,27 +66,7 @@
                     </select>
                   </div>
                 </div>
-                <!-- <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="searchUserLevel">Level</label>
-                    <select
-                      class="form-control"
-                      id="searchUserLevel"
-                      name="searchUserLevel"
-                      #userLevel="ngModel"
-                      [(ngModel)]="searchUserLevel"
-                    >
-                      <option>All</option>
-                      <option
-                        value="{{ level.id }}"
-                        *ngFor="let level of userLevels"
-                        >{{ level.description }}</option
-                      >
-                    </select>
-                  </div>
-                </div> -->
-              </div>
-              <div class="row">
+
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="searchBranchCode">Branch</label>
@@ -120,27 +82,19 @@
                         value="{{ branche.branchno }}"
                         *ngFor="let branche of branches"
                       >
-                        {{ branche.branchno }} -
-                        {{ branche.branchnamee }}</option
-                      >
+                        {{ branche.branchno }} - {{ branche.branchnamee }}
+                      </option>
                     </select>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <!----------------------------Btns----------------------------->
               <div class="form-group">
                 <div class="col-md-12 text-right">
-                  <button
-                    type="submit"
-                    class="btn btn-raised btn-warning mr-1 shadow-z-2"
-                  >
+                  <button type="submit" class="btn btn-raised btn-warning mr-1 shadow-z-2">
                     <i class="ft-search"></i> Search
                   </button>
-                  <button
-                    type="button"
-                    class="btn btn-raised btn-success mr-1 shadow-z-2"
-                    (click)="onAddItem()"
-                  >
+                  <button type="button" class="btn btn-raised btn-success mr-1 shadow-z-2" (click)="onAddItem()">
                     <i class="ft-search"></i> Add
                   </button>
                 </div>
@@ -158,54 +112,28 @@
       <div class="card">
         <div class="card-body">
           <div class="card-block">
-            <ngx-datatable
-              id="usersList"
-              class="bootstrap"
-              [rows]="itemList"
-              [columnMode]="'force'"
-              [headerHeight]="50"
-              [footerHeight]="50"
-              [rowHeight]="'auto'"
-              [limit]="searchingObject.size"
-              [externalPaging]="true"
-              [count]="dataTableCount"
-              [offset]="searchingObject.page"
-              (page)="setPage($event)"
-              (sort)="setPage($event)"
-            >
+            <ngx-datatable id="usersList" class="bootstrap" [rows]="itemList" [columnMode]="'force'" [headerHeight]="50"
+              [footerHeight]="50" [rowHeight]="'auto'" [limit]="searchingObject.size" [externalPaging]="true"
+              [count]="dataTableCount" [offset]="searchingObject.page" (page)="setPage($event)"
+              (sort)="setPage($event)">
               <ngx-datatable-column name="User Name" prop="userName">
-                <ng-template
-                  ngx-datatable-cell-template
-                  let-rowIndex="rowIndex"
-                  let-value="value"
-                  let-row="row"
-                >
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
                   {{ row.userName }}
                 </ng-template>
               </ngx-datatable-column>
 
               <ngx-datatable-column name="Full Name" prop="firstName">
-                <ng-template
-                  ngx-datatable-cell-template
-                  let-rowIndex="rowIndex"
-                  let-value="value"
-                  let-row="row"
-                >
-                  {{ row.firstName }} - {{ row.lastName }}
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  {{ row.firstName }} {{ row.lastName }}
                 </ng-template>
               </ngx-datatable-column>
 
               <ngx-datatable-column name="Status" prop="active">
-                <ng-template
-                  ngx-datatable-cell-template
-                  let-rowIndex="rowIndex"
-                  let-value="value"
-                  let-row="row"
-                >
-                  {{ row.active === 1 ? "Active" : "Active" }}
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  {{ row.active === 1 ? "Active" : "Inctive" }}
                 </ng-template>
               </ngx-datatable-column>
-
+              <!-- 
               <ngx-datatable-column
                 name="Job Description"
                 prop="jobDescription"
@@ -218,22 +146,12 @@
                 >
                   {{ row.jobDescription }}
                 </ng-template>
-              </ngx-datatable-column>
+              </ngx-datatable-column> -->
 
               <ngx-datatable-column name="Action">
-                <ng-template
-                  ngx-datatable-cell-template
-                  let-rowIndex="rowIndex"
-                  let-value="value"
-                  let-row="row"
-                >
-                  <a
-                    (click)="onEdit(row)"
-                    class="btn btn-primary btn-fab"
-                    title="Edit"
-                  >
-                    <i class="ft-edit"></i
-                  ></a>
+                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+                  <a (click)="onEdit(row)" class="btn btn-primary btn-fab" title="Edit">
+                    <i class="ft-edit"></i></a>
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>
@@ -242,4 +160,9 @@
       </div>
     </div>
   </div>
+</div>
+
+<div id="UserFormId" *ngIf="renderForm">
+  <app-user [item]="selectedItem" [isUpdateMode]="isUpdateMode" (renderFormEvent)="updateView($event)">
+  </app-user>
 </div>

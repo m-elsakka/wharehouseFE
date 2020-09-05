@@ -12,10 +12,16 @@ export class ReportService extends BaseHttpCrudService {
     this.serviceUrl = 'claims/findReport';
   }
 
-  getReport(period:any) {
-    console.log([period]);
-    const url = this.serviceUrl+"?period=" +period;
-    return super.downloadFile(url);
+  // getReport(period:any) {
+  //   console.log([period]);
+  //   const url = this.serviceUrl+"?period=" +period;
+  //   return super.downloadFile(url);
+  // }
+
+  getReport(reportId: number, searchObj?: any) {
+    const url = this.serviceUrl + reportId;
+    return super.downloadFileWithSearchParam(url, searchObj);
   }
+
 
 }

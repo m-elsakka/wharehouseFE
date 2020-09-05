@@ -1,13 +1,13 @@
-import {Injectable} from '@angular/core';
-import {HttpService} from './base.http.service';
-import {HttpClient} from '@angular/common/http';
-import {SearchParPojo} from 'src/app/shared/model/searching-pojos/search.par.pojo.model';
-import {BaseConstants} from './base.constants';
+import { Injectable } from '@angular/core';
+import { HttpService } from './base.http.service';
+import { HttpClient } from '@angular/common/http';
+import { SearchParPojo } from 'src/app/shared/model/searching-pojos/search.par.pojo.model';
+import { BaseConstants } from './base.constants';
+import { OrderConstant } from '../order/order.constant';
 //import {OnePagerConstant} from "../one-pager/one-pager-constant";
 
 @Injectable()
 export class BaseHttpCrudService extends HttpService {
-
   constructor(private httpClient: HttpClient) {
     super(httpClient);
   }
@@ -17,7 +17,7 @@ export class BaseHttpCrudService extends HttpService {
     serviceUrl += BaseConstants.FIND_ALL;
     headers = this.headers;
     body = {};
-    return super.postRequest(serviceUrl, body, {headers: headers});
+    return super.postRequest(serviceUrl, body, { headers: headers });
   }
 
   findById(serviceUrl: string, id: number) {
@@ -25,6 +25,14 @@ export class BaseHttpCrudService extends HttpService {
     url = serviceUrl + BaseConstants.FIND_BY_ID + '/' + id;
     requestHeaders = this.headers;
     return super.getRequest(url, requestHeaders);
+  }
+
+  findStkTransInOut(inOut: string) {
+    let headers, body;
+    let serviceUrl = OrderConstant.STK_TRANS_INOUT + `findInOut/${inOut}`;
+    headers = this.headers;
+    body = {};
+    return super.postRequest(serviceUrl, body, { headers: headers });
   }
 
   findPageWithSearchPojo(serviceUrl: string, searchingObject: SearchParPojo) {
@@ -35,7 +43,7 @@ export class BaseHttpCrudService extends HttpService {
       searchingObject.size = 5;
     }
     body = searchingObject;
-    return super.postRequest(url, body, {headers: requestHeaders});
+    return super.postRequest(url, body, { headers: requestHeaders });
   }
 
   findWithSearchPojo(serviceUrl: string, searchingObject: SearchParPojo) {
@@ -46,7 +54,7 @@ export class BaseHttpCrudService extends HttpService {
       searchingObject.size = 5;
     }
     body = searchingObject;
-    return super.postRequest(url, body, {headers: requestHeaders});
+    return super.postRequest(url, body, { headers: requestHeaders });
   }
 
   deleteItem(serviceUrl: string, itemId) {
@@ -68,13 +76,13 @@ export class BaseHttpCrudService extends HttpService {
     let requestHeaders, url;
     requestHeaders = this.headers;
     url = serviceUrl + BaseConstants.CREATE;
-    return super.postRequest(url, item, {headers: requestHeaders});
+    return super.postRequest(url, item, { headers: requestHeaders });
   }
 
   private updateItem(serviceUrl: string, item: any) {
     let requestHeaders, url;
     requestHeaders = this.headers;
     url = serviceUrl + BaseConstants.EDIT + '/' + item.id;
-    return super.putRequest(url, item, {headers: requestHeaders});
+    return super.putRequest(url, item, { headers: requestHeaders });
   }
 }

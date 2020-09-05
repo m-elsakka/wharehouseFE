@@ -12,7 +12,15 @@ export class StkTransactionService extends BaseHttpCrudService {
     super(httpStkTransactionSer);
   }
 
-  uploadOrderReceiptHeader(fileToUpload: File, transno: number) {
+  getAllStkTransIn() {
+    return super.findStkTransInOut('in');
+  }
+
+  getAllStkTransOut() {
+    return super.findStkTransInOut('out');
+  }
+
+  uploadOrderHeader(fileToUpload: File, transno: number) {
     const formData: FormData = new FormData();
     let multipartHeaders;
     multipartHeaders = this.multipartHeaders;

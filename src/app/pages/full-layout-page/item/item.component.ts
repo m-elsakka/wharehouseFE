@@ -22,6 +22,7 @@ export class ItemListComponent extends BaseListComponent implements OnInit {
 
   rows = [];
   isEditable = {};
+  isAddMode = {};
 
   @ViewChild('searchForm') searchForm: NgForm;
 
@@ -43,6 +44,7 @@ export class ItemListComponent extends BaseListComponent implements OnInit {
 
   ngOnInit(): void {
     super.init();
+    this.isUpdateMode = true;
   }
 
   getAllItem() {
@@ -59,21 +61,76 @@ export class ItemListComponent extends BaseListComponent implements OnInit {
     );
   }
 
+  validationItem(rowIndex) {
+    let isValid = true;
+    let detail;
+    detail = this.itemList[rowIndex];
+    if (
+      detail.itemno === undefined ||
+      detail.itemno === null ||
+      detail.itemnamee === undefined ||
+      detail.itemnamee === null ||
+      detail.itemnamea === undefined ||
+      detail.itemnamea === null ||
+      detail.netweight === undefined ||
+      detail.netweight === null
+    ) {
+      isValid = false;
+      return isValid;
+    }
+    return isValid;
+  }
+
   save(row, rowIndex) {
-    this.isEditable[rowIndex] = !this.isEditable[rowIndex];
-    console.log('Row saved: ' + rowIndex);
-    console.log(row);
-    this.saveItem(row);
+    if (this.validationItem(rowIndex)) {
+      this.isEditable[rowIndex] = !this.isEditable[rowIndex];
+      if (this.isAddMode[rowIndex]) {
+        this.saveItem(row, false);
+        this.isUpdateMode = true;
+      } else {
+        this.saveItem(row, true);
+      }
+
+      this.isAddMode[rowIndex] = false;
+      console.log('Row saved: ' + rowIndex);
+      console.log(row);
+    } else {
+      this.toast.setErrorMsg('Item is not valid!');
+    }
+  }
+
+  // Add new row
+  addNewRow() {
+    this.newItem = new ItemModel();
+    let rowIndx = this.dataTableCount++;
+    this.temp = [...this.temp, this.newItem];
+    this.itemList = [...this.temp];
+
+    this.isEditable[rowIndx] = true; // enable editable fields
+    this.isAddMode[rowIndx] = true; //enable sequence field
+    this.isUpdateMode = false; //disable add button
+
+    console.log('New row added ' + this.newItem + '0000 ' + rowIndx);
   }
 
   // Delete row
   delete(row, rowIndex) {
-    this.isEditable[rowIndex] = !this.isEditable[rowIndex];
+    if (this.isAddMode[rowIndex]) {
+      this.isEditable[rowIndex] = false;
+      this.isUpdateMode = true;
+
+      this.temp = [...this.itemList];
+      this.temp.splice(rowIndex, 1);
+      this.itemList = [...this.temp];
+      this.dataTableCount--;
+    } else {
+      this.isEditable[rowIndex] = !this.isEditable[rowIndex];
+    }
     console.log('Row deleted: ' + rowIndex);
   }
 
-  saveItem(row: any) {
-    this.itemServ.saveItems(this.serviceURL, row, true).subscribe(
+  saveItem(row: any, isUpdateMode: boolean) {
+    this.itemServ.saveItems(this.serviceURL, row, isUpdateMode).subscribe(
       (data: any) => {
         console.log(data);
         if (data.success) {

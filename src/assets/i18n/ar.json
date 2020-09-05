@@ -1,22 +1,27 @@
 {
-  "branch": "branche",
+  "branch": "مخزن",
+  "Plant": "مخزن",
 
-  "branchno": "branchno",
-  "branchnamea": "branchnamea",
-  "branchnamee": "branchnamee",
-  "active": "active",
+  "branchno": "رقم المخزن",
+  "branchnamea": "اسم المخزن بالانجليزي",
+  "branchnamee": "اسم المخزن بالعربي",
+  "active": "نشط",
 
-  "itemnamee": "itemnamee",
-  "itemnamea": "itemnamea",
-  "itemtype": "itemtype",
-  "netweight": "netweight",
+  "itemnamee": "اسم الصنف بالانجليزي",
+  "itemnamea": "اسم الصنف بالعربي",
+  "itemtype": "نوع الصنف",
+  "netweight": "الوزن الصافي",
   "uom": "uom",
 
   "customernamee": "اسم العميل بالانجليزية",
-  "customernamea": "اسم العميل بالعربية",
+  "customernamea": "اسم العميل بالعربي",
   "customerno": "رقم العميل",
 
   "cabinetnamee": "اسم الثلاجة بالانجليزية",
-  "cabinetnamea": "اسم الثلاجة بالعربية",
-  "cabinetno": "رقم الثلاجة"
+  "cabinetnamea": "اسم الثلاجة بالعربي",
+  "cabinetno": "رقم الثلاجة",
+
+  "plantnamee": "اسم المخزن بالانجليزية",
+  "plantnamea": "اسم المخزن بالعربي",
+  "plantno": "رقم المخزن"
 }

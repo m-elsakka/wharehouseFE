@@ -79,13 +79,13 @@ export class UserListComponent extends BaseListComponent implements OnInit {
     //   userLevelFilter.type = '2';
     //   this.searchingObject.filtersList.push(userLevelFilter);
     // }
-    if (this.searchActive && this.searchActive + '' !== 'All') {
-      const activeFilter: FilterPojo = new FilterPojo();
-      activeFilter.fieldName = 'active';
-      activeFilter.filter = '' + this.searchActive;
-      activeFilter.type = '2';
-      this.searchingObject.filtersList.push(activeFilter);
-    }
+    // if (this.searchActive && this.searchActive + '' !== 'All') {
+    //   const activeFilter: FilterPojo = new FilterPojo();
+    //   activeFilter.fieldName = 'active';
+    //   activeFilter.filter = '' + this.searchActive;
+    //   activeFilter.type = '2';
+    //   this.searchingObject.filtersList.push(activeFilter);
+    // }
 
     if (this.searchBranch) {
       if (this.searchBranch && this.searchBranch + '' !== 'All') {

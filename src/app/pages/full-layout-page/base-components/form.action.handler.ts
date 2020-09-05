@@ -1,18 +1,18 @@
-import {NgForm} from '@angular/forms';
-import {ToastService} from 'src/app/shared/services/uitls/toast.service';
-import {NgxSpinnerService} from 'ngx-spinner';
+import { NgForm } from '@angular/forms';
+import { ToastService } from 'src/app/shared/services/uitls/toast.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 export class FormActionHandler {
-
-  constructor(private toastService?: ToastService,
-              private spinnerService?: NgxSpinnerService,) {
-  }
+  constructor(
+    private toastService?: ToastService,
+    private spinnerService?: NgxSpinnerService
+  ) {}
 
   markFormGroupTouched(form: NgForm) {
-    (<any>Object).values(form.controls).forEach(control => {
+    (<any>Object).values(form.controls).forEach((control) => {
       control.markAsTouched();
       if (control.controls) {
-        control.controls.forEach(c => this.markFormGroupTouched(c));
+        control.controls.forEach((c) => this.markFormGroupTouched(c));
       }
     });
   }
@@ -23,7 +23,7 @@ export class FormActionHandler {
     year = +dateList[0];
     month = +dateList[1];
     day = +dateList[2];
-    dateObj = {year: year, month: month, day: day};
+    dateObj = { year: year, month: month, day: day };
     return dateObj;
   }
 
@@ -35,18 +35,17 @@ export class FormActionHandler {
 
   castDate(dateObj: Date) {
     let year, month, day;
-	
-	if(dateObj instanceof Date) {
-    year = dateObj.getFullYear();
-	month = dateObj.getMonth() + 1;
-    day = dateObj.getDate();
-    let date;
-    date = year + '.' + month + '.' + day + '-00:00:00';
-    return date;
-	}
-	else {
-	return dateObj;
-	}
+
+    if (dateObj instanceof Date) {
+      year = dateObj.getFullYear();
+      month = dateObj.getMonth() + 1;
+      day = dateObj.getDate();
+      let date;
+      date = year + '.' + month + '.' + day + '-00:00:00';
+      return date;
+    } else {
+      return dateObj;
+    }
   }
 
   convertBooleanToNumber(value: any) {
@@ -71,7 +70,7 @@ export class FormActionHandler {
   convertDateStartWithMonth(dateSt: string) {
     let date, dateObj;
     dateObj = this.convertLocalDateTimeToJsDate(dateSt);
-    date =    dateObj.month + '/'+dateObj.day +'/' + dateObj.year;
+    date = dateObj.month + '/' + dateObj.day + '/' + dateObj.year;
     return date;
   }
 
@@ -105,7 +104,7 @@ export class FormActionHandler {
   handleSuccess(data) {
     this.spinnerService.hide();
     let obj: any;
-    obj = {data: [], totalElements: 5};
+    obj = { data: [], totalElements: 5 };
     if (!data.success) {
       this.toastService.setErrorMsg(data.exceptionMessage);
     } else {
@@ -119,5 +118,4 @@ export class FormActionHandler {
     this.toastService.setErrorMsg(error.data.exceptionMessage);
     return [];
   }
-
 }

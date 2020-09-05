@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiSwitchModule } from 'ngx-ui-switch';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 //import {MultiSelectModule} from 'primeng/multiselect';
 //import {DropdownModule} from 'primeng/dropdown';
 import { AccordionModule } from 'primeng/accordion';
@@ -43,6 +43,14 @@ import { CustomerListComponent } from './customer/customer.component';
 import { CustomerService } from 'src/app/shared/services/master-data/customer.service';
 import { CabinetService } from 'src/app/shared/services/master-data/cabinet.service';
 import { CabinetListComponent } from './cabinet/cabinet.component';
+import { OrderReceiptDetailsComponent } from './order-receipt/order-details/order-receipt-details.component';
+import { StkTransactionService } from 'src/app/shared/services/order/order.service';
+import { OrderReceiptHeaderComponent } from './order-receipt/order-header/order-receipt-header.component';
+import { OrderIssueHeaderComponent } from './order-issue/order-header/order-issue-header.component';
+import { OrderIssueDetailsComponent } from './order-issue/order-details/order-issue-details.component';
+import { UserHierComponent } from './reports/user-hier/user-hier.component';
+import { BaseReportComponent } from './reports/base-report/base-report.component';
+import { StkTransDetailsComponent } from './reports/stk-trans-details/stk-trans-details.component';
 
 @NgModule({
   imports: [
@@ -61,7 +69,7 @@ import { CabinetListComponent } from './cabinet/cabinet.component';
     MatRadioModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    // DropdownModule,
+    NgbDropdownModule,
     MultiSelectModule,
     AccordionModule,
     //FormControl
@@ -69,12 +77,19 @@ import { CabinetListComponent } from './cabinet/cabinet.component';
   ],
   declarations: [
     AccessDeniedComponent,
+    BaseReportComponent,
     UserListComponent,
     UserComponent,
+    UserHierComponent,
     BranchListComponent,
     ItemListComponent,
     CustomerListComponent,
     CabinetListComponent,
+    OrderReceiptHeaderComponent,
+    OrderReceiptDetailsComponent,
+    OrderIssueHeaderComponent,
+    OrderIssueDetailsComponent,
+    StkTransDetailsComponent,
   ],
   providers: [
     BaseHttpCrudService,
@@ -86,6 +101,7 @@ import { CabinetListComponent } from './cabinet/cabinet.component';
     BranchService,
     CustomerService,
     CabinetService,
+    StkTransactionService,
   ],
 })
 export class FullPagesModule {}

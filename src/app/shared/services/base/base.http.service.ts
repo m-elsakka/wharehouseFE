@@ -69,7 +69,10 @@ export class HttpService {
         return responseBody.data;
       }),
       catchError((error: HttpErrorResponse) => {
-        return throwError(this.handleError(error));
+        return throwError(error.message);
+        // let responseBody;
+        // responseBody = this.jwtHelper.decodeToken(error.error);
+        // return throwError(this.handleError(responseBody));
       })
     );
   }
@@ -104,6 +107,9 @@ export class HttpService {
       }),
       catchError((error: HttpErrorResponse) => {
         return throwError(error.message);
+        // let responseBody;
+        // responseBody = this.jwtHelper.decodeToken(error.error);
+        // return throwError(this.handleError(responseBody));
       })
     );
   }
