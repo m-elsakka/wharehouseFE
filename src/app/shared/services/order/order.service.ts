@@ -20,6 +20,10 @@ export class StkTransactionService extends BaseHttpCrudService {
     return super.findStkTransInOut('out');
   }
 
+  getAllStkTransactions(serviceUrl: string) {
+    return super.findAll(serviceUrl);
+  }
+
   uploadOrderHeader(fileToUpload: File, transno: number) {
     const formData: FormData = new FormData();
     let multipartHeaders;

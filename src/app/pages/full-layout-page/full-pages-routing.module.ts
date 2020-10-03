@@ -12,6 +12,7 @@ import { OrderReceiptDetailsComponent } from './order-receipt/order-details/orde
 import { OrderReceiptHeaderComponent } from './order-receipt/order-header/order-receipt-header.component';
 import { OrderIssueHeaderComponent } from './order-issue/order-header/order-issue-header.component';
 import { OrderIssueDetailsComponent } from './order-issue/order-details/order-issue-details.component';
+import { StkTransHeaderComponent } from './stk-transactions/stk-trans-header/stk-trans-header.component';
 
 const routes: Routes = [
   {
@@ -84,6 +85,14 @@ const routes: Routes = [
     canActivate: [AuthoritiesGuardService],
     data: {
       title: 'STK Issue Details',
+    },
+  },
+  {
+    path: 'stk-trans-header',
+    component: StkTransHeaderComponent,
+    canActivate: [AuthoritiesGuardService],
+    data: {
+      title: 'Stock Transactions',
     },
   },
   // {
