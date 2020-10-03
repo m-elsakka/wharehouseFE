@@ -36,6 +36,31 @@
                 </div>
               </div>
 
+              <div class="row">
+                <!-- <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="searchCabinet">Cabinet</label>
+                    <select class="form-control" id="searchCabinet" name="searchCabinet" #searchCabinet="ngModel"
+                      [(ngModel)]="searchCabinet">
+                      <option>All</option>
+                      <option value="{{ cabinet.cabinetno }}" *ngFor="let cabinet of userCabinets">
+                        {{ cabinet.cabinetno }} - {{ cabinet.cabinetnamea }}
+                      </option>
+                    </select>
+                  </div>
+                </div> -->
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="active">Status</label>
+                    <select class="form-control" id="active" name="active" #active="ngModel" [(ngModel)]="searchActive">
+                      <option>All</option>
+                      <option value="1">Active</option>
+                      <option value="0">Inactive</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
               <!-- <div class="row">
                 <div class="col-md-4">
                   <div class="form-group">
@@ -50,23 +75,7 @@
                     />
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label for="active">Status</label>
-                    <select
-                      class="form-control"
-                      id="active"
-                      name="active"
-                      #active="ngModel"
-                      [(ngModel)]="searchActive"
-                    >
-                      <option>All</option>
-                      <option value="1">Active</option>
-                      <option value="0">Inactive</option>
-                    </select>
-                  </div>
-                </div>
-
+                
                 <div class="col-md-3">
                   <div class="form-group">
                     <label for="searchBranchCode">Branch</label>

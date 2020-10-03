@@ -113,43 +113,51 @@
             </div>-->
 
             <div class="row">
-              <div class="form-group col-md-4">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" id="password" #password="ngModel"
-                  [(ngModel)]="item.password" minlength="'6'" [ngModelOptions]="{ updateOn: 'blur' }" ngModel
-                  required />
-                <small class="form-text text-muted danger" *ngIf="
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" name="password" id="password" #password="ngModel"
+                    [(ngModel)]="item.password" minlength="'6'" [ngModelOptions]="{ updateOn: 'blur' }" ngModel
+                    required />
+                  <small class="form-text text-muted danger" *ngIf="
                     !password.valid && (password.dirty || password.touched)
                   ">
-                  Password is required
-                </small>
+                    Password is required
+                  </small>
+                </div>
               </div>
 
-              <div class="form-group col-md-4">
-                <label for="cPassword">Confirm Password</label>
-                <input type="password" class="form-control" id="cPassword" name="cPassword" #cPassword="ngModel"
-                  [ngModelOptions]="{ updateOn: 'blur' }" [(ngModel)]="item.confirmedPassword" minlength="'6'" ngModel
-                  required />
-                <small class="form-text text-muted danger" *ngIf="
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="cPassword">Confirm Password</label>
+                  <input type="password" class="form-control" id="cPassword" name="cPassword" #cPassword="ngModel"
+                    [ngModelOptions]="{ updateOn: 'blur' }" [(ngModel)]="item.confirmedPassword" minlength="'6'" ngModel
+                    required />
+                  <small class="form-text text-muted danger" *ngIf="
                     !cPassword.valid &&
                     (cPassword.dirty || cPassword.touched) &&
                     cPassword.errors?.equalTo
                   ">
-                  Confirm Password do not match
-                </small>
+                    Confirm Password do not match
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="active">Status</label>
+                  <!-- <ui-switch ngbButtonLabel="" id="active" name="active" #active="ngModel"
+                    (valueChange)="activeStatusChange($event)" [(ngModel)]="item.activeFlag">
+                  </ui-switch> -->
+                  <select class="form-control" id="active" name="active" #active="ngModel" [(ngModel)]="item.active">
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                  </select>
+                </div>
               </div>
             </div>
 
             <div class="row">
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="active">Status</label>
-                  <ui-switch ngbButtonLabel="" id="active" name="active" #active="ngModel"
-                    (valueChange)="activeStatusChange($event)" [(ngModel)]="item.activeFlag">
-                  </ui-switch>
-                </div>
-              </div>
-
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="authorities">Authorities</label>
@@ -160,6 +168,22 @@
                   </div>
                   <small class="form-text text-muted danger" *ngIf="!cc.valid && (cc.dirty || cc.touched)">
                     Authorities is required
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="searchUserCabinet">Cabinets</label>
+                  <div class="input-group">
+                    <p-multiSelect id="searchUserCabinet" name="searchUserCabinet" [resetFilterOnHide]="true"
+                      optionLabel="cabinetnamea" [options]="userCabinets" #userCabinet="ngModel"
+                      [(ngModel)]="item.stkCabinetList" required>
+                    </p-multiSelect>
+                  </div>
+                  <small class="form-text text-muted danger"
+                    *ngIf="!userCabinet.valid && (userCabinet.dirty || userCabinet.touched)">
+                    Cabinets is required!
                   </small>
                 </div>
               </div>

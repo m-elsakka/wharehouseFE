@@ -11,6 +11,8 @@ import { BranchService } from '../../../../shared/services/master-data/branch.se
 import { BranchModel } from '../../../../shared/model/master-data/branch.model';
 import { AuthorityService } from '../../../../shared/services/master-data/authority.service';
 import { AuthorityModel } from '../../../../shared/model/master-data/authority.model';
+import { CabinetModel } from 'src/app/shared/model/master-data/cabinet.model';
+import { CabinetService } from 'src/app/shared/services/master-data/cabinet.service';
 
 @Component({
   selector: 'app-user',
@@ -18,34 +20,30 @@ import { AuthorityModel } from '../../../../shared/model/master-data/authority.m
   styleUrls: ['./user.component.scss'],
 })
 export class UserComponent extends BaseItemComponent implements OnInit {
-  @Input('userLevels') userLevels: UserLevelModel[];
-
   branches: BranchModel[];
   allAuthoritiesList: AuthorityModel[];
+  userCabinets: any[];
   authorities: any[];
 
   constructor(
     private toast: ToastService,
     private spinner: NgxSpinnerService,
     private userManagerSer: UserManagerService,
-    private branchSer: BranchService,
+    private cabinetSer: CabinetService,
     private authoritySer: AuthorityService
   ) {
     super(toast, spinner, userManagerSer);
     this.serviceURL = this.userManagerSer.serviceUrl;
-    this.getBranches();
     this.getAuthorities();
+    this.getCabinets();
     this.authorities = [];
+    // this.getBranches();
   }
 
   ngOnInit() {}
 
   activeStatusChange(value: any) {
     this.item.active = super.convertBooleanToNumber(value);
-  }
-
-  levelNumberChange(levelNumber: number) {
-    this.item.branchNo = '';
   }
 
   setPasswordRequired() {
@@ -59,25 +57,6 @@ export class UserComponent extends BaseItemComponent implements OnInit {
     return true;
   }
 
-  private getBranches() {
-    const branchSearchObj: SearchParPojo = new SearchParPojo();
-    const activeFilter: FilterPojo = new FilterPojo();
-    activeFilter.type = '2';
-    activeFilter.filter = 'Y';
-    activeFilter.fieldName = 'active';
-    branchSearchObj.filtersList.push(activeFilter);
-
-    this.branchSer.getBranchListBySearchObject(branchSearchObj).subscribe(
-      (data: any) => {
-        this.branches = super.handleRetrieveMasterDateSuccess(data);
-      },
-      (error: any) => {
-        this.branches = [];
-        super.handleRetrieveMasterDateFailure(error);
-      }
-    );
-  }
-
   private getAuthorities() {
     this.authoritySer.getAllAuthorities().subscribe(
       (data: any) => {
@@ -89,4 +68,34 @@ export class UserComponent extends BaseItemComponent implements OnInit {
       }
     );
   }
+
+  private getCabinets() {
+    this.cabinetSer.getAllCabinet().subscribe(
+      (data: any) => {
+        this.userCabinets = super.handleRetrieveMasterDateSuccess(data);
+      },
+      (error: any) => {
+        super.handleRetrieveMasterDateFailure(error);
+      }
+    );
+  }
+
+  // private getBranches() {
+  //   const branchSearchObj: SearchParPojo = new SearchParPojo();
+  //   const activeFilter: FilterPojo = new FilterPojo();
+  //   activeFilter.type = '2';
+  //   activeFilter.filter = 'Y';
+  //   activeFilter.fieldName = 'active';
+  //   branchSearchObj.filtersList.push(activeFilter);
+
+  //   this.branchSer.getBranchListBySearchObject(branchSearchObj).subscribe(
+  //     (data: any) => {
+  //       this.branches = super.handleRetrieveMasterDateSuccess(data);
+  //     },
+  //     (error: any) => {
+  //       this.branches = [];
+  //       super.handleRetrieveMasterDateFailure(error);
+  //     }
+  //   );
+  // }
 }

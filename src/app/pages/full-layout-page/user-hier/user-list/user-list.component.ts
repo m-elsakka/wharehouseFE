@@ -5,8 +5,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { FilterPojo } from '../../../../shared/model/searching-pojos/filter.pojo';
 import { UserManagerService } from '../../../../shared/services/master-data/user-manager.service';
 import { UserModel } from '../../../../shared/model/master-data/user.model';
-import { BranchService } from '../../../../shared/services/master-data/branch.service';
 import { BranchModel } from '../../../../shared/model/master-data/branch.model';
+import { CabinetModel } from 'src/app/shared/model/master-data/cabinet.model';
+import { CabinetService } from 'src/app/shared/services/master-data/cabinet.service';
 
 @Component({
   selector: 'app-user-list',
@@ -17,24 +18,24 @@ export class UserListComponent extends BaseListComponent implements OnInit {
   searchUserName: string;
   searchFirstName: string;
   searchLastName: string;
-  searchJobDescription: string;
-  searchUserLevel: number;
   searchActive: number;
-  searchBranch: string;
+  // searchCabinet: string;
+  // searchJobDescription: string;
+  // searchUserLevel: number;
+  // searchBranch: string;
 
+  // branches: BranchModel[];
   // userLevels: UserLevelModel[];
-  branches: BranchModel[];
 
   constructor(
     private toast: ToastService,
     private spinner: NgxSpinnerService,
-    private branchSer: BranchService,
     private userManagerSer: UserManagerService
   ) {
     super(toast, spinner, userManagerSer);
     this.serviceURL = this.userManagerSer.serviceUrl;
     // this.getUserLevels();
-    this.getBranches();
+    // this.getBranches();
   }
 
   ngOnInit() {
@@ -65,13 +66,31 @@ export class UserListComponent extends BaseListComponent implements OnInit {
       this.searchingObject.filtersList.push(lastNameFilter);
     }
 
-    if (this.searchJobDescription) {
-      const jobDescriptionFilter: FilterPojo = new FilterPojo();
-      jobDescriptionFilter.fieldName = 'jobDescription';
-      jobDescriptionFilter.filter = this.searchJobDescription;
-      jobDescriptionFilter.type = '1';
-      this.searchingObject.filtersList.push(jobDescriptionFilter);
+    if (this.searchActive && this.searchActive + '' !== 'All') {
+      const activeFilter: FilterPojo = new FilterPojo();
+      activeFilter.fieldName = 'active';
+      activeFilter.filter = '' + this.searchActive;
+      activeFilter.type = '2';
+      this.searchingObject.filtersList.push(activeFilter);
     }
+
+    // if (this.searchCabinet) {
+    //   if (this.searchCabinet && this.searchCabinet + '' !== 'All') {
+    //     const cabinetFilter: FilterPojo = new FilterPojo();
+    //     cabinetFilter.fieldName = 'branchNo';
+    //     cabinetFilter.filter = this.searchCabinet;
+    //     cabinetFilter.type = '1';
+    //     this.searchingObject.filtersList.push(cabinetFilter);
+    //   }
+    // }
+
+    // if (this.searchJobDescription) {
+    //   const jobDescriptionFilter: FilterPojo = new FilterPojo();
+    //   jobDescriptionFilter.fieldName = 'jobDescription';
+    //   jobDescriptionFilter.filter = this.searchJobDescription;
+    //   jobDescriptionFilter.type = '1';
+    //   this.searchingObject.filtersList.push(jobDescriptionFilter);
+    // }
     // if (this.searchUserLevel && this.searchUserLevel + '' !== 'All') {
     //   const userLevelFilter: FilterPojo = new FilterPojo();
     //   userLevelFilter.fieldName = 'userLevelId';
@@ -79,23 +98,16 @@ export class UserListComponent extends BaseListComponent implements OnInit {
     //   userLevelFilter.type = '2';
     //   this.searchingObject.filtersList.push(userLevelFilter);
     // }
-    // if (this.searchActive && this.searchActive + '' !== 'All') {
-    //   const activeFilter: FilterPojo = new FilterPojo();
-    //   activeFilter.fieldName = 'active';
-    //   activeFilter.filter = '' + this.searchActive;
-    //   activeFilter.type = '2';
-    //   this.searchingObject.filtersList.push(activeFilter);
-    // }
 
-    if (this.searchBranch) {
-      if (this.searchBranch && this.searchBranch + '' !== 'All') {
-        const branchFilter: FilterPojo = new FilterPojo();
-        branchFilter.fieldName = 'branchNo';
-        branchFilter.filter = this.searchBranch;
-        branchFilter.type = '1';
-        this.searchingObject.filtersList.push(branchFilter);
-      }
-    }
+    // if (this.searchBranch) {
+    //   if (this.searchBranch && this.searchBranch + '' !== 'All') {
+    //     const branchFilter: FilterPojo = new FilterPojo();
+    //     branchFilter.fieldName = 'branchNo';
+    //     branchFilter.filter = this.searchBranch;
+    //     branchFilter.type = '1';
+    //     this.searchingObject.filtersList.push(branchFilter);
+    //   }
+    // }
 
     super.onSearch();
   }
@@ -115,15 +127,15 @@ export class UserListComponent extends BaseListComponent implements OnInit {
   //   );
   // }
 
-  private getBranches() {
-    this.branchSer.getAllBranches().subscribe(
-      (data: any) => {
-        this.branches = super.handleSuccess(data);
-      },
-      (error: any) => {
-        this.branches = [];
-        super.handleFailure(error);
-      }
-    );
-  }
+  // private getBranches() {
+  //   this.branchSer.getAllBranches().subscribe(
+  //     (data: any) => {
+  //       this.branches = super.handleSuccess(data);
+  //     },
+  //     (error: any) => {
+  //       this.branches = [];
+  //       super.handleFailure(error);
+  //     }
+  //   );
+  // }
 }

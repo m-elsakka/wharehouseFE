@@ -45,9 +45,9 @@
               "./node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
               "src/assets/vendor/pace/pace.min.js",
-              "src/assets/js/perfect-scrollbar.jquery.min.js",
-              "./node_modules/jquery/dist/jquery.min.js"
+              "src/assets/js/perfect-scrollbar.jquery.min.js"
             ]
           },
           "configurations": {
