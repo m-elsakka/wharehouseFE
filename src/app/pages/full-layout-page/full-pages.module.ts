@@ -50,7 +50,9 @@ import { OrderIssueHeaderComponent } from './order-issue/order-header/order-issu
 import { OrderIssueDetailsComponent } from './order-issue/order-details/order-issue-details.component';
 import { UserHierComponent } from './reports/user-hier/user-hier.component';
 import { BaseReportComponent } from './reports/base-report/base-report.component';
-import { StkTransDetailsComponent } from './reports/stk-trans-details/stk-trans-details.component';
+import { StkTransDetailsReportComponent } from './reports/stk-trans-details/stk-trans-details.component';
+import { StkTransHeaderComponent } from './stk-transactions/stk-trans-header/stk-trans-header.component';
+import { TableModule } from 'primeng';
 
 @NgModule({
   imports: [
@@ -72,6 +74,7 @@ import { StkTransDetailsComponent } from './reports/stk-trans-details/stk-trans-
     NgbDropdownModule,
     MultiSelectModule,
     AccordionModule,
+    TableModule,
     //FormControl
     //BrowserAnimationsModule
   ],
@@ -89,7 +92,8 @@ import { StkTransDetailsComponent } from './reports/stk-trans-details/stk-trans-
     OrderReceiptDetailsComponent,
     OrderIssueHeaderComponent,
     OrderIssueDetailsComponent,
-    StkTransDetailsComponent,
+    StkTransDetailsReportComponent,
+    StkTransHeaderComponent,
   ],
   providers: [
     BaseHttpCrudService,

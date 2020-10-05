@@ -1,19 +1,21 @@
 import { StkTransDetailsCategoryModel } from './stk-trans-details-category.model';
 
 export class StkTransDetailsModel {
-  productiondate: Date;
+  productiondate: any;
   // itemno: string;
-  transno: string;
-  q_crt: number;
+  transNo: string;
+  qCrt: number;
   branchno: string;
   // accqcrt: number;
   // itemprice: number;
-  weight: number;
-  category_code: string;
+  catWeight: number;
+  categoryCode: string;
+  categoryNamee: string;
+  categoryNamea: string;
 
-  stkTransDetailsCatgoryList: StkTransDetailsCategoryModel[];
+  stkTransCategoryList: StkTransDetailsCategoryModel[];
 
   constructor() {
-    this.stkTransDetailsCatgoryList = [];
+    this.stkTransCategoryList = [];
   }
 }

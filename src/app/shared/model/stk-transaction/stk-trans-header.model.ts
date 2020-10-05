@@ -1,16 +1,16 @@
 import { StkTransDetailsModel } from './stk-trans-details.model';
 
 export class StkTransHeaderModel {
-  transno: number;
-  transdate: Date;
-  transref: string;
-  postdate: Date;
+  transNo: number;
+  transDate: any;
+  transRef: string;
+  postDate: Date;
   status: string;
   accountc: string;
   branchno: string;
   accountd: string;
-  transdesccode: string;
-  accounttype: string;
+  // transdesccode: string;
+  // accounttype: string;
 
   stkTransDetailsList: StkTransDetailsModel[];
 

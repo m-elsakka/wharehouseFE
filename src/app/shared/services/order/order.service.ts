@@ -8,8 +8,11 @@ import { OrderConstant } from './order.constant';
 
 @Injectable()
 export class StkTransactionService extends BaseHttpCrudService {
+  serverUrl: string;
+
   constructor(private httpStkTransactionSer: HttpClient) {
     super(httpStkTransactionSer);
+    this.serverUrl = OrderConstant.STK_TRANS_INOUT;
   }
 
   getAllStkTransIn() {
@@ -20,8 +23,12 @@ export class StkTransactionService extends BaseHttpCrudService {
     return super.findStkTransInOut('out');
   }
 
-  getAllStkTransactions(serviceUrl: string) {
-    return super.findAll(serviceUrl);
+  getAllStkTransactions() {
+    return super.findAll(this.serverUrl);
+  }
+
+  getCustomersListBySearchObject(searchObject: SearchParPojo) {
+    return super.findWithSearchPojo(this.serverUrl, searchObject);
   }
 
   uploadOrderHeader(fileToUpload: File, transno: number) {

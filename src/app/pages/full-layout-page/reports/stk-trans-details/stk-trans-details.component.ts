@@ -12,7 +12,8 @@ import { CabinetService } from 'src/app/shared/services/master-data/cabinet.serv
   templateUrl: './stk-trans-details.component.html',
   styleUrls: ['./stk-trans-details.component.scss'],
 })
-export class StkTransDetailsComponent extends BaseReportActionComponent
+export class StkTransDetailsReportComponent
+  extends BaseReportActionComponent
   implements OnInit {
   cabinetList: any[];
   selectedCabinet: any;

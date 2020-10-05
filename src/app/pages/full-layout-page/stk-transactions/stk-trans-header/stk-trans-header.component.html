@@ -12,9 +12,12 @@
       <div class="card">
         <div class="card-body">
           <div class="card-block">
-            <ngx-datatable class="bootstrap" [rows]="itemList" [columnMode]="'force'" [headerHeight]="50"
+            <ngx-datatable #myTable class="bootstrap" [rows]="itemList" [columnMode]="'force'" [headerHeight]="50"
               [footerHeight]="50" [rowHeight]="'auto'" [limit]="searchingObject.size" [externalPaging]="true"
-              [count]="dataTableCount" [offset]="searchingObject.page" (page)="setPage($event)">
+              [count]="dataTableCount" [offset]="searchingObject.page" (page)="setPage($event)" [selected]="selected"
+              [selectionType]="SelectionType.single" (activate)="onActivate($event)" (select)="onSelect($event)">
+
+
               <!-- Row Panel Template -->
               <ngx-datatable-row-detail [rowHeight]="100" #myDetailRow>
                 <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
@@ -23,68 +26,154 @@
                   </div>
                 </ng-template>
               </ngx-datatable-row-detail>
-
-              <ngx-datatable-column name="transno">
-                <ng-template let-column="column" ngx-datatable-header-template>
-                  <input type="text" class="managetextfilter" placeholder="{{ 'transno' | transloco }}"
-                    (keyup)="updateFilter($event, 'transno')" />
-                </ng-template>
-
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-                  {{ row.transno }}
-                </ng-template>
-              </ngx-datatable-column>
-
-              <ngx-datatable-column name="postdate" [width]="185">
-                <ng-template let-column="column" ngx-datatable-header-template>
-                  <input type="date" class="managetextfilter" placeholder="postdate | date: 'yyyy-MM-dd'"
-                    name="postdate" (keyup)="updateFilter($event, 'postdate')" />
-                </ng-template>
-              </ngx-datatable-column>
-
-              <ngx-datatable-column name="accountc">
-                <ng-template let-column="column" ngx-datatable-header-template>
-                  <input type="text" class="managetextfilter" placeholder="{{ 'accountc' | transloco }}"
-                    (keyup)="updateFilter($event, 'accountc')" />
-                </ng-template>
-
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-                  {{ row.accountc }}
-                </ng-template>
-              </ngx-datatable-column>
-
-              <ngx-datatable-column name="accountd">
-                <ng-template let-column="column" ngx-datatable-header-template>
-                  <input type="text" class="managetextfilter" placeholder="{{ 'accountd' | transloco }}"
-                    (keyup)="updateFilter($event, 'accountd')" />
-                </ng-template>
-
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-                  {{ row.accountd }}
-                </ng-template>
-              </ngx-datatable-column>
-
-              <ngx-datatable-column name="transdesccode">
-                <ng-template let-column="column" ngx-datatable-header-template>
-                  <input type="text" class="managetextfilter" placeholder="{{ 'transdesccode' | transloco }}"
-                    (keyup)="updateFilter($event, 'transdesccode')" />
-                </ng-template>
-
-                <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
-                  {{ row.transdesccode }}
-                </ng-template>
-              </ngx-datatable-column>
-
-              <ngx-datatable-column name="Action">
-                <ng-template let-value="value" let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                  <!-- View icon -->
-                  <i class="btn btn-primary btn-fab" title="View" (click)="navigateToStkTransDetails(row)"></i>
-                </ng-template>
-              </ngx-datatable-column>
             </ngx-datatable>
+
+            <!--SEARCH FORM-->
+            <div class="row" *ngIf="selected !== undefined && selected !== null">
+              <div class="col-sm-12">
+                <div class="card">
+                  <div class="card-body ivf-card-body">
+                    <div class="card-block">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="transNo">Transaction No</label>
+                            <input type="text" class="form-control" id="transNo" name="transNo" #transNo="ngModel"
+                              [(ngModel)]="selected.transNo" disabled />
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="transRef">Transaction Refernce</label>
+                            <input type="text" class="form-control" id="transRef" name="transRef" #transRef="ngModel"
+                              [(ngModel)]="selected.transRef" disabled />
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="transDate">Transaction Date</label>
+                            <input type="date" #transDateM [value]="selected.transDate | date:'yyyy-MM-dd'"
+                              name="transDate" disabled />
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="postDate">Post Date</label>
+                            <input type="date" #postDateM [value]="selected.postDate | date:'yyyy-MM-dd'"
+                              name="postDate" disabled />
+                          </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="status">Status</label>
+                            <input type="text" class="form-control" id="status" name="status" #status="ngModel"
+                              [(ngModel)]="selected.status" disabled />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="row" *ngIf="selected !== undefined && selected !== null">
+    <div class="col-sm-12">
+      <div class="accordion">
+        <div class="card">
+          <div class="card-body">
+            <div class="card-block">
+              <p-table [value]="selected.stkTransDetailsList" dataKey="categoryCode">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th style="width: 3rem"></th>
+                    <th pSortableColumn="categoryCode">Category Code <p-sortIcon field="categoryCode"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="categoryNamee">Category Namee <p-sortIcon field="categoryNamee"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="categoryNamea">Category Namea <p-sortIcon field="categoryNamea"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="productiondate">Production Date <p-sortIcon field="productiondate">
+                      </p-sortIcon>
+                    </th>
+                    <th pSortableColumn="qCrt">Quatinty In Crt <p-sortIcon field="qCrt"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="catWeight">Category Weight <p-sortIcon field="catWeight"></p-sortIcon>
+                    </th>
+
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-category let-expanded="expanded">
+                  <tr>
+                    <td>
+                      <button type="button" pButton pRipple [pRowToggler]="category"
+                        class="p-button-text p-button-rounded p-button-plain"
+                        [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    </td>
+                    <td>{{category.categoryCode}}</td>
+                    <td>{{category.categoryNamee}}</td>
+                    <td>{{category.categoryNamea}}</td>
+                    <td>{{category.productiondate}}</td>
+                    <td>{{category.qCrt}}</td>
+                    <td>{{category.catWeight}}</td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="rowexpansion" let-category>
+                  <tr>
+                    <td colspan="7">
+                      <div class="p-p-3">
+                        <p-table [value]="category.stkTransCategoryList" dataKey="categoryCode">
+                          >
+                          <ng-template pTemplate="header">
+                  <tr>
+                    <th pSortableColumn="categoryCode">Category Code <p-sortIcon field="categoryCode"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="productiondate">Production Date <p-sortIcon field="productiondate">
+                      </p-sortIcon>
+                    </th>
+                    <th pSortableColumn="barcode">Barcode <p-sortIcon field="barcode"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="weight"> Weight <p-sortIcon field="weight"></p-sortIcon>
+                    </th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-detail>
+                  <tr>
+                    <td>{{detail.categoryCode}}</td>
+                    <td>{{detail.productiondate}}</td>
+                    <td>{{detail.barcode}}</td>
+                    <td>{{detail.weight}}</td>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                  <tr>
+                    <td colspan="6">There are no items for this category yet.</td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+            </td>
+            </tr>
+            </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
