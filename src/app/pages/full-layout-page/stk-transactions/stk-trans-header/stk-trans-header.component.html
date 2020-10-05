@@ -12,10 +12,11 @@
       <div class="card">
         <div class="card-body">
           <div class="card-block">
-            <ngx-datatable #myTable class="bootstrap" [rows]="itemList" [columnMode]="'force'" [headerHeight]="50"
-              [footerHeight]="50" [rowHeight]="'auto'" [limit]="searchingObject.size" [externalPaging]="true"
-              [count]="dataTableCount" [offset]="searchingObject.page" (page)="setPage($event)" [selected]="selected"
-              [selectionType]="SelectionType.single" (activate)="onActivate($event)" (select)="onSelect($event)">
+            <ngx-datatable #myTable class="bootstrap stk-trans" [rows]="itemList" [columnMode]="'force'"
+              [headerHeight]="50" [footerHeight]="50" [rowHeight]="'auto'" [limit]="searchingObject.size"
+              [externalPaging]="true" [count]="dataTableCount" [offset]="searchingObject.page" (page)="setPage($event)"
+              [selected]="selected" [selectionType]="SelectionType.single" (activate)="onActivate($event)"
+              (select)="onSelect($event)">
 
 
               <!-- Row Panel Template -->
@@ -99,7 +100,7 @@
               <p-table [value]="selected.stkTransDetailsList" dataKey="categoryCode">
                 <ng-template pTemplate="header">
                   <tr>
-                    <th style="width: 3rem"></th>
+                    <th>Show Items</th>
                     <th pSortableColumn="categoryCode">Category Code <p-sortIcon field="categoryCode"></p-sortIcon>
                     </th>
                     <th pSortableColumn="categoryNamee">Category Namee <p-sortIcon field="categoryNamee"></p-sortIcon>
@@ -139,7 +140,9 @@
                           >
                           <ng-template pTemplate="header">
                   <tr>
-                    <th pSortableColumn="categoryCode">Category Code <p-sortIcon field="categoryCode"></p-sortIcon>
+                    <th pSortableColumn="itemno">Item no <p-sortIcon field="itemno"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="itemname">Item Name <p-sortIcon field="itemname"></p-sortIcon>
                     </th>
                     <th pSortableColumn="productiondate">Production Date <p-sortIcon field="productiondate">
                       </p-sortIcon>
@@ -152,7 +155,8 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-detail>
                   <tr>
-                    <td>{{detail.categoryCode}}</td>
+                    <td>{{detail.itemno}}</td>
+                    <td>{{detail.itemname}}</td>
                     <td>{{detail.productiondate}}</td>
                     <td>{{detail.barcode}}</td>
                     <td>{{detail.weight}}</td>

@@ -91,6 +91,9 @@ label {
 .ngx-datatable .datatable-body {
   display: initial !important;
 }
+.ngx-datatable .datatable-header {
+  display: table-header-group !important;
+}
 .ngx-datatable .datatable-body-cell,
 .ngx-datatable .datatable-header-cell {
   vertical-align: middle !important;
@@ -123,13 +126,14 @@ label {
 .ngx-datatable .datatable-footer .datatable-footer-inner {
   padding: 0.7rem 1rem;
   color: #848486;
+  height: 52px !important;
 }
 
 ul.pager .pages {
   width: 1.8rem;
   height: 1.8rem;
   border-radius: 50%;
-  border: 1px solid gray;
+  // border: 1px solid gray;
   margin: 0 0.3rem !important;
   text-align: center;
   align-items: center;
@@ -145,6 +149,9 @@ ul.pager .pages.active a {
 }
 .ngx-datatable .datatable-footer .datatable-pager {
   text-align: center !important;
+}
+.ngx-datatable.bootstrap .datatable-footer .page-count {
+  color: azure !important;
 }
 .mat-input-element {
   text-align: center !important;

@@ -1,9 +1,9 @@
-.ngx-datatable.bootstrap {
+.stk-trans {
   box-shadow: none;
   font-size: 1rem;
   .datatable-header {
     height: unset !important;
-    display: none !important;
+    display: inline-table !important;
     .datatable-header-cell {
       vertical-align: bottom;
       padding: 0.75rem;
@@ -13,38 +13,22 @@
       }
     }
   }
-  .datatable-body {
-    .datatable-body-row {
-      padding: 0.75rem;
-      vertical-align: top;
-      border-top: 1px solid #d1d4d7;
-      &.datatable-row-even {
-        background-color: rgba(0, 0, 0, 0.05);
-      }
-      &.active {
-        background-color: #1483ff;
-        color: #fff;
-      }
-      .datatable-body-cell {
-        text-align: left;
-        vertical-align: top;
-      }
-    }
-  }
+
   .datatable-footer {
-    background: #424242;
-    color: #ededed;
+    background: #6d71ac !important;
+    color: #000000;
     margin-top: -1px;
-    .page-count {
+    height: 51px;
+    .selected-count .page-count {
       line-height: 50px;
       height: 50px;
       padding: 0 1.2rem;
+      color: azure;
     }
     .datatable-pager {
       margin: 0 10px;
       vertical-align: top;
-      position: absolute;
-      top: -56px;
+      text-align: center !important;
       right: 0;
       ul {
         li {
