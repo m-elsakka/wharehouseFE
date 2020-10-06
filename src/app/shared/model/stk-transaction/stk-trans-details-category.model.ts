@@ -1,7 +1,7 @@
 export class StkTransDetailsCategoryModel {
   productiondate: any;
-  itemno: string;
-  itemname: string;
+  itemCode: string;
+  itemName: string;
   transNo: string;
   barcode: string;
   weight: number;

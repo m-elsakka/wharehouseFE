@@ -1,10 +1,13 @@
 var appConfig = {
   isLive: false,
   context: "wharehouse",
-  backendUrl: "http://localhost:8080/wharehouseBE/",
+
+  //Dev
+  // backendUrl: "http://localhost:8080/wharehouseBE/",
 
   // test
-  // backendUrl: "http://wizard-app.lon.wafaicloud.com/wharehouseBE/",
+  backendUrl: "http://41.33.147.66:8080/wharehouseBE/",
 
   // production
+  // backendUrl: "http://localhost:8080/wharehouseBE/",
 };

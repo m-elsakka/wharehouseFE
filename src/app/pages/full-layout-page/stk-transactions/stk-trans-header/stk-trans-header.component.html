@@ -53,6 +53,24 @@
                         </div>
                       </div>
 
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control" id="description" name="description"
+                              #description="ngModel" [(ngModel)]="selected.description" disabled />
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="opType">Operation Type</label>
+                            <input type="text" class="form-control" id="opType" name="opType" #opType="ngModel"
+                              [(ngModel)]="selected.opType" disabled />
+                          </div>
+                        </div>
+                      </div>
+
 
                       <div class="row">
                         <div class="col-md-4">
@@ -140,9 +158,9 @@
                           >
                           <ng-template pTemplate="header">
                   <tr>
-                    <th pSortableColumn="itemno">Item no <p-sortIcon field="itemno"></p-sortIcon>
+                    <th pSortableColumn="itemCode">Item no <p-sortIcon field="itemCode"></p-sortIcon>
                     </th>
-                    <th pSortableColumn="itemname">Item Name <p-sortIcon field="itemname"></p-sortIcon>
+                    <th pSortableColumn="itemName">Item Name <p-sortIcon field="itemName"></p-sortIcon>
                     </th>
                     <th pSortableColumn="productiondate">Production Date <p-sortIcon field="productiondate">
                       </p-sortIcon>
@@ -155,8 +173,8 @@
                 </ng-template>
                 <ng-template pTemplate="body" let-detail>
                   <tr>
-                    <td>{{detail.itemno}}</td>
-                    <td>{{detail.itemname}}</td>
+                    <td>{{detail.itemCode}}</td>
+                    <td>{{detail.itemName}}</td>
                     <td>{{detail.productiondate}}</td>
                     <td>{{detail.barcode}}</td>
                     <td>{{detail.weight}}</td>

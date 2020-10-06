@@ -9,6 +9,8 @@ export class StkTransHeaderModel {
   accountc: string;
   branchno: string;
   accountd: string;
+  opType: string;
+  description: string;
   // transdesccode: string;
   // accounttype: string;
 
