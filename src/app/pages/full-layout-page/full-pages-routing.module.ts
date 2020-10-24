@@ -8,12 +8,8 @@ import { BranchListComponent } from './branch/branch.component';
 import { CustomerListComponent } from './customer/customer.component';
 import { CabinetListComponent } from './cabinet/cabinet.component';
 import { UserComponent } from './user-hier/user/user.component';
-import { OrderReceiptDetailsComponent } from './order-receipt/order-details/order-receipt-details.component';
-import { OrderReceiptHeaderComponent } from './order-receipt/order-header/order-receipt-header.component';
-import { OrderIssueHeaderComponent } from './order-issue/order-header/order-issue-header.component';
-import { OrderIssueDetailsComponent } from './order-issue/order-details/order-issue-details.component';
 import { StkTransHeaderComponent } from './stk-transactions/stk-trans-header/stk-trans-header.component';
-
+import { SelectCabinetComponent } from './select-cabinet/select-cabinet.component'
 const routes: Routes = [
   {
     path: 'cabinet',
@@ -56,38 +52,6 @@ const routes: Routes = [
     },
   },
   {
-    path: 'stk-trans-receipt',
-    component: OrderReceiptHeaderComponent,
-    canActivate: [AuthoritiesGuardService],
-    data: {
-      title: 'STK Receipt',
-    },
-  },
-  {
-    path: 'order-receipt-details/:transno',
-    component: OrderReceiptDetailsComponent,
-    canActivate: [AuthoritiesGuardService],
-    data: {
-      title: 'STK Receipt Details',
-    },
-  },
-  {
-    path: 'stk-trans-issue',
-    component: OrderIssueHeaderComponent,
-    canActivate: [AuthoritiesGuardService],
-    data: {
-      title: 'STK Issue',
-    },
-  },
-  {
-    path: 'order-issue-details/:transno',
-    component: OrderIssueDetailsComponent,
-    canActivate: [AuthoritiesGuardService],
-    data: {
-      title: 'STK Issue Details',
-    },
-  },
-  {
     path: 'stk-trans-header',
     component: StkTransHeaderComponent,
     canActivate: [AuthoritiesGuardService],
@@ -95,14 +59,14 @@ const routes: Routes = [
       title: 'Stock Transactions',
     },
   },
-  // {
-  //   path: 'reports',
-  //   component: BaseReportComponent,
-  //   canActivate: [AuthoritiesGuardService],
-  //   data: {
-  //     title: 'Report',
-  //   },
-  // },
+  {
+    path: 'select-cabinet',
+    component: SelectCabinetComponent,
+    canActivate: [AuthoritiesGuardService],
+    data: {
+      title: 'Select Cabinet',
+    },
+  },
   {
     path: 'access-denied',
     component: AccessDeniedComponent,

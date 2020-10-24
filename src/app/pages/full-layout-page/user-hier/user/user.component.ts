@@ -70,11 +70,19 @@ export class UserComponent extends BaseItemComponent implements OnInit {
   }
 
   private getCabinets() {
-    this.cabinetSer.getAllCabinet().subscribe(
+    const cabinetSearchObj: SearchParPojo = new SearchParPojo();
+    const activeFilter: FilterPojo = new FilterPojo();
+    activeFilter.type = '2';
+    activeFilter.filter = '1';
+    activeFilter.fieldName = 'active';
+    cabinetSearchObj.filtersList.push(activeFilter);
+
+    this.cabinetSer.getCabinetListBySearchObject(cabinetSearchObj).subscribe(
       (data: any) => {
         this.userCabinets = super.handleRetrieveMasterDateSuccess(data);
       },
       (error: any) => {
+        this.userCabinets=[];
         super.handleRetrieveMasterDateFailure(error);
       }
     );

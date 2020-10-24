@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseHttpCrudService } from '../base/base-http-crud.service';
 import { HttpClient } from '@angular/common/http';
 import { BaseConstants } from '../base/base.constants';
+import { SearchParPojo } from '../../model/searching-pojos/search.par.pojo.model';
 
 @Injectable()
 export class UserManagerService extends BaseHttpCrudService {
@@ -15,6 +16,10 @@ export class UserManagerService extends BaseHttpCrudService {
   retrieveUserLevels() {
     const url = 'usermanagement/user-levels/';
     return super.findAll(url);
+  }
+
+  getUserListBySearchObject(searchObject: SearchParPojo) {
+    return super.findWithSearchPojo(this.serviceUrl, searchObject);
   }
 
   deleteItem(serviceUrl: string, itemId) {

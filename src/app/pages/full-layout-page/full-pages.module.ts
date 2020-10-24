@@ -4,7 +4,6 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { FullPagesRoutingModule } from './full-pages-routing.module';
 import { CalendarModule } from 'primeng/calendar';
-import { ReportService } from 'src/app/shared/services/report/report.service';
 
 import { AuthorityService } from '../../shared/services/master-data/authority.service';
 //import {CustomFormsModule} from 'ng2-validation';
@@ -43,16 +42,10 @@ import { CustomerListComponent } from './customer/customer.component';
 import { CustomerService } from 'src/app/shared/services/master-data/customer.service';
 import { CabinetService } from 'src/app/shared/services/master-data/cabinet.service';
 import { CabinetListComponent } from './cabinet/cabinet.component';
-import { OrderReceiptDetailsComponent } from './order-receipt/order-details/order-receipt-details.component';
 import { StkTransactionService } from 'src/app/shared/services/order/order.service';
-import { OrderReceiptHeaderComponent } from './order-receipt/order-header/order-receipt-header.component';
-import { OrderIssueHeaderComponent } from './order-issue/order-header/order-issue-header.component';
-import { OrderIssueDetailsComponent } from './order-issue/order-details/order-issue-details.component';
-import { UserHierComponent } from './reports/user-hier/user-hier.component';
-import { BaseReportComponent } from './reports/base-report/base-report.component';
-import { StkTransDetailsReportComponent } from './reports/stk-trans-details/stk-trans-details.component';
 import { StkTransHeaderComponent } from './stk-transactions/stk-trans-header/stk-trans-header.component';
-import { TableModule } from 'primeng';
+import { ButtonModule, CardModule, DataView, DataViewModule, TableModule } from 'primeng';
+import { SelectCabinetComponent } from './select-cabinet/select-cabinet.component';
 
 @NgModule({
   imports: [
@@ -75,31 +68,27 @@ import { TableModule } from 'primeng';
     MultiSelectModule,
     AccordionModule,
     TableModule,
+    ButtonModule,
+    DataViewModule,
+    CardModule,
     //FormControl
     //BrowserAnimationsModule
   ],
   declarations: [
     AccessDeniedComponent,
-    BaseReportComponent,
     UserListComponent,
     UserComponent,
-    UserHierComponent,
     BranchListComponent,
     ItemListComponent,
     CustomerListComponent,
     CabinetListComponent,
-    OrderReceiptHeaderComponent,
-    OrderReceiptDetailsComponent,
-    OrderIssueHeaderComponent,
-    OrderIssueDetailsComponent,
-    StkTransDetailsReportComponent,
     StkTransHeaderComponent,
+    SelectCabinetComponent,
   ],
   providers: [
     BaseHttpCrudService,
     ToastrService,
     AuthorityService,
-    ReportService,
     UserManagerService,
     ItemService,
     BranchService,

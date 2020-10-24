@@ -1,0 +1,35 @@
+<div class="card">
+    <p-dataView #dv [value]="itemList" [paginator]="true" [rows]="9" layout="grid">
+        <ng-template pTemplate="header">
+        </ng-template>
+        <ng-template let-cabinet pTemplate="gridItem">
+            <div class="p-col-6 p-md-4">
+                <div class="product-grid-item card">
+                    <div class="product-grid-item-content">
+                        <div class="product-name">{{cabinet.cabinetno}}</div>
+                        <div class="product-description">{{cabinet.cabinetnamee}}</div>
+
+
+                        <!-- <p-card [style]="{width: '360px', background: 'lightgray'}" styleClass="p-card-shadow">
+                            <p-header>
+                                <div class="cabinet-desc">{{cabinet.cabinetno}} - {{cabinet.cabinetnamee}} </div>
+                            </p-header>
+
+                            <p-footer>
+                                <p-button label="Select" icon="pi pi-check"
+                                    (onClick)="setCurrentUserCabinet(cabinet.cabinetno)">
+                                </p-button>
+                            </p-footer>
+                        </p-card> -->
+
+                    </div>
+
+                    <div class="product-grid-item-bottom">
+                        <p-button icon="pi pi-map-marker" (onClick)="setCurrentUserCabinet(cabinet.cabinetno)">
+                        </p-button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
