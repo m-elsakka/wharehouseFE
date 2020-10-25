@@ -7,7 +7,6 @@ import { UserManagerService } from '../../../../shared/services/master-data/user
 import { UserModel } from '../../../../shared/model/master-data/user.model';
 import { SearchParPojo } from '../../../../shared/model/searching-pojos/search.par.pojo.model';
 import { FilterPojo } from '../../../../shared/model/searching-pojos/filter.pojo';
-import { BranchService } from '../../../../shared/services/master-data/branch.service';
 import { BranchModel } from '../../../../shared/model/master-data/branch.model';
 import { AuthorityService } from '../../../../shared/services/master-data/authority.service';
 import { AuthorityModel } from '../../../../shared/model/master-data/authority.model';
@@ -37,7 +36,7 @@ export class UserComponent extends BaseItemComponent implements OnInit {
     this.getAuthorities();
     this.getCabinets();
     this.authorities = [];
-    // this.getBranches();
+    this.userCabinets =[]; 
   }
 
   ngOnInit() {}
@@ -47,13 +46,6 @@ export class UserComponent extends BaseItemComponent implements OnInit {
   }
 
   setPasswordRequired() {
-    // for (let i = 0; i < this.item.authorities.length; i++) {
-    //   let auth;
-    //   auth = this.item.authorities[i];
-    //   if (auth.name === 'ROLE_SALES_FORCE') {
-    //     return true;
-    //   }
-    // }
     return true;
   }
 
@@ -87,23 +79,4 @@ export class UserComponent extends BaseItemComponent implements OnInit {
       }
     );
   }
-
-  // private getBranches() {
-  //   const branchSearchObj: SearchParPojo = new SearchParPojo();
-  //   const activeFilter: FilterPojo = new FilterPojo();
-  //   activeFilter.type = '2';
-  //   activeFilter.filter = 'Y';
-  //   activeFilter.fieldName = 'active';
-  //   branchSearchObj.filtersList.push(activeFilter);
-
-  //   this.branchSer.getBranchListBySearchObject(branchSearchObj).subscribe(
-  //     (data: any) => {
-  //       this.branches = super.handleRetrieveMasterDateSuccess(data);
-  //     },
-  //     (error: any) => {
-  //       this.branches = [];
-  //       super.handleRetrieveMasterDateFailure(error);
-  //     }
-  //   );
-  // }
 }

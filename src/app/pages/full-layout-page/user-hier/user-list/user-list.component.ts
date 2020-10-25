@@ -74,41 +74,6 @@ export class UserListComponent extends BaseListComponent implements OnInit {
       this.searchingObject.filtersList.push(activeFilter);
     }
 
-    // if (this.searchCabinet) {
-    //   if (this.searchCabinet && this.searchCabinet + '' !== 'All') {
-    //     const cabinetFilter: FilterPojo = new FilterPojo();
-    //     cabinetFilter.fieldName = 'branchNo';
-    //     cabinetFilter.filter = this.searchCabinet;
-    //     cabinetFilter.type = '1';
-    //     this.searchingObject.filtersList.push(cabinetFilter);
-    //   }
-    // }
-
-    // if (this.searchJobDescription) {
-    //   const jobDescriptionFilter: FilterPojo = new FilterPojo();
-    //   jobDescriptionFilter.fieldName = 'jobDescription';
-    //   jobDescriptionFilter.filter = this.searchJobDescription;
-    //   jobDescriptionFilter.type = '1';
-    //   this.searchingObject.filtersList.push(jobDescriptionFilter);
-    // }
-    // if (this.searchUserLevel && this.searchUserLevel + '' !== 'All') {
-    //   const userLevelFilter: FilterPojo = new FilterPojo();
-    //   userLevelFilter.fieldName = 'userLevelId';
-    //   userLevelFilter.filter = '' + this.searchUserLevel;
-    //   userLevelFilter.type = '2';
-    //   this.searchingObject.filtersList.push(userLevelFilter);
-    // }
-
-    // if (this.searchBranch) {
-    //   if (this.searchBranch && this.searchBranch + '' !== 'All') {
-    //     const branchFilter: FilterPojo = new FilterPojo();
-    //     branchFilter.fieldName = 'branchNo';
-    //     branchFilter.filter = this.searchBranch;
-    //     branchFilter.type = '1';
-    //     this.searchingObject.filtersList.push(branchFilter);
-    //   }
-    // }
-
     super.onSearch();
   }
 
@@ -116,26 +81,4 @@ export class UserListComponent extends BaseListComponent implements OnInit {
     super.onAddItem(new UserModel());
   }
 
-  // private getUserLevels() {
-  //   this.userManagerSer.retrieveUserLevels().subscribe(
-  //     (data: any) => {
-  //       this.userLevels = this.handleSuccess(data);
-  //     },
-  //     (error: any) => {
-  //       this.handleFailure(error);
-  //     }
-  //   );
-  // }
-
-  // private getBranches() {
-  //   this.branchSer.getAllBranches().subscribe(
-  //     (data: any) => {
-  //       this.branches = super.handleSuccess(data);
-  //     },
-  //     (error: any) => {
-  //       this.branches = [];
-  //       super.handleFailure(error);
-  //     }
-  //   );
-  // }
 }

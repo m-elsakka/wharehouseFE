@@ -11,6 +11,8 @@ import { TranslocoService } from '@ngneat/transloco';
 })
 
 export class NavbarComponent {
+  selectedCabinet:string;
+
     constructor(private authSer: AuthService,private toastSer: ToastService
       ,private service: TranslocoService) {
     }
@@ -32,6 +34,11 @@ export class NavbarComponent {
 
     getfullName(){
         return this.authSer.getfullName();
+    }
+
+    getSelectedUserCabinet(){
+       this.selectedCabinet = this.authSer.getCurrentUserCabinet();
+       return this.selectedCabinet;
     }
     status: string = "en";
     change(lang: string) {

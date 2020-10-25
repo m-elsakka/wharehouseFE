@@ -64,6 +64,16 @@ export class AuthService {
     }
   }
 
+  getCurrentUserCabinet(){
+    let cabinet = sessionStorage.getItem(AuthConstant.SELECTED_CABINET);
+    if (!cabinet || cabinet === 'undefined') {
+       cabinet = localStorage.getItem(AuthConstant.SELECTED_CABINET);
+    }
+
+    return cabinet;
+  }
+
+
   getCurrentUserCabinets() {
     let cabinetList: string;
     this.stkCabinetList = [];

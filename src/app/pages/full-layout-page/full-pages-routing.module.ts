@@ -4,7 +4,6 @@ import { AccessDeniedComponent } from './access-denied/access-denied.component';
 import { UserListComponent } from './user-hier/user-list/user-list.component';
 import { AuthoritiesGuardService } from 'src/app/shared/services/auth/authorities-guard.service';
 import { ItemListComponent } from './item/item.component';
-import { BranchListComponent } from './branch/branch.component';
 import { CustomerListComponent } from './customer/customer.component';
 import { CabinetListComponent } from './cabinet/cabinet.component';
 import { UserComponent } from './user-hier/user/user.component';
@@ -17,14 +16,6 @@ const routes: Routes = [
     canActivate: [AuthoritiesGuardService],
     data: {
       title: 'Cabinets',
-    },
-  },
-  {
-    path: 'branch',
-    component: BranchListComponent,
-    canActivate: [AuthoritiesGuardService],
-    data: {
-      title: 'Plants',
     },
   },
   {
